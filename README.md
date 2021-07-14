@@ -6,7 +6,7 @@ The UCD provide machine-readable data files about Unicode [characters properties
 
 ## Layout
 
-Most files consists of character code points ---`cp`--- or code points range ---`cp--lo`--`cp.hi`--- and corresponding property value or, sometimes, mappings to other code points. Most files also contains one or more additional informative fields. Since they may vary in length and meaning, they're usually stored in single column named `comments` of the `data.frame`.
+Most files consists of character code points &mdash;`cp`&mdash; or code points range &mdash;`cp.lo`&ndash;`cp.hi`&mdash; and corresponding property value or, sometimes, mappings to other code points. Most files also contains one or more additional informative fields. Since they may vary in length and meaning, they're usually stored in single column named `comments` of the `data.frame`.
 
 Files names are abbreviated in order to avoid too much typing because of the added prefix
 
@@ -28,7 +28,7 @@ Files names are abbreviated in order to avoid too much typing because of the add
 |[auxiliary/WordBreakProperty](https://unicode.org/reports/tr44/#WordBreakProperty.txt)|ucd.wordBrkProp|
 |[emoji/emoji-data](https://unicode.org/reports/tr44/#emoji-data.txt)|ucd.emoji|
 
-The standard also provides data files for Unicode Security Mechanisms which are in the security directory of the repository
+The standard also provides data files for Unicode Security Mechanisms which are located in the security directory of the repository
 
 |File Name | `data.frame` Name |
 |----------|-------------------|
@@ -39,21 +39,43 @@ The standard also provides data files for Unicode Security Mechanisms which are 
 
 Please refer to [Tr#39: Unicode Security Mechanisms](http://www.unicode.org/reports/tr39/) for further details.
 
-The `data.frames` retain the original commented lines ---if any--- in an `attribute` named "htxt". For example, you can retrieve the header of the original UCD files which describes the file's format like this 
+If you don't want to download the entire database, you can download individual files from R using a modified url :
+
 ``` r
-a <- attr(ucd.ucd.propvalal,"htxt")
-a[1:attr(a, "hlen")[1]]
+co <- url('https://raw.githubusercontent.com/tsoubiran/UCD/master/13.0.0/security/Rdata/confusables.Rdata')
+load(co)
+close(co)
 ``` 
-or extract every comment blocks
+
+Using [https://github.com/tsoubiran/UCD/blob/master/13.0.0/security/Rdata/confusables.Rdata](https://github.com/tsoubiran/UCD/blob/master/13.0.0/security/Rdata/confusables.Rdata) won't work because bacause in that case github.com  will redirect to raw.githubusercontent.com and `url()` does not handle redirection so it seems.
+
+## Metadata
+
+The `data.frames` retain the original commented lines &mdash;if any&mdash; in an `attribute` named "htxt". For example, you can retrieve the header of the original UCD files which describes the file's format and points to the relevant TR like this 
+
 ``` r
-lapply(
-  1:(length(attr(a, "hlen")))
-  , function(i, idx){
-    cat(i)
-    a[idx[i]:idx[i+1]]
-  }
-  , idx = c(1,cumsum(attr(a, "hlen")))
-)
+ucd.hdr <- function(x){
+  h <- attr(x,"htxt")
+  h[1:attr(h,"hlen")[1]]
+}
+ucd.hdr(ucd.propvalal)
+``` 
+
+or extract every comment blocks
+
+``` r
+ucd.comments <- function(x){
+  h <- attr(x,"htxt")
+  lapply(
+    1:(length(attr(h, "hlen")))
+    , function(i, idx){
+      cat(i)
+      h[idx[i]:idx[i+1]]
+    }
+    , idx = c(1,cumsum(attr(h, "hlen")))
+  )
+}
+commments <- ucd.comments(ucd.propvalal)
 ``` 
 
 ## License
