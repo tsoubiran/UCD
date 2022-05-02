@@ -1,0 +1,3812 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>UCD Files Headers</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+</head>
+<body>
+<header>
+<h1 class="title">UCD Files Headers</h1>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#arabicshaping">ArabicShaping</a></li>
+<li><a href="#bidibrackets">BidiBrackets</a></li>
+<li><a href="#bidimirroring">BidiMirroring</a></li>
+<li><a href="#blocks">Blocks</a></li>
+<li><a href="#casefolding">CaseFolding</a></li>
+<li><a href="#cjkradicals">CJKRadicals</a></li>
+<li><a href="#compositionexclusions">CompositionExclusions</a></li>
+<li><a href="#derivedage">DerivedAge</a></li>
+<li><a href="#derivedcoreproperties">DerivedCoreProperties</a></li>
+<li><a href="#derivednormalizationprops">DerivedNormalizationProps</a></li>
+<li><a href="#eastasianwidth">EastAsianWidth</a></li>
+<li><a href="#equivalentunifiedideograph">EquivalentUnifiedIdeograph</a></li>
+<li><a href="#hangulsyllabletype">HangulSyllableType</a></li>
+<li><a href="#indicpositionalcategory">IndicPositionalCategory</a></li>
+<li><a href="#indicsyllabiccategory">IndicSyllabicCategory</a></li>
+<li><a href="#jamo">Jamo</a></li>
+<li><a href="#linebreak">LineBreak</a></li>
+<li><a href="#namealiases">NameAliases</a></li>
+<li><a href="#namedsequences">NamedSequences</a></li>
+<li><a href="#namedsequencesprov">NamedSequencesProv</a></li>
+<li><a href="#normalizationcorrections">NormalizationCorrections</a></li>
+<li><a href="#propertyaliases">PropertyAliases</a></li>
+<li><a href="#propertyvaluealiases">PropertyValueAliases</a></li>
+<li><a href="#proplist">PropList</a></li>
+<li><a href="#scriptextensions">ScriptExtensions</a></li>
+<li><a href="#scripts">Scripts</a></li>
+<li><a href="#specialcasing">SpecialCasing</a></li>
+<li><a href="#standardizedvariants">StandardizedVariants</a></li>
+<li><a href="#unicodedata">UnicodeData</a></li>
+<li><a href="#verticalorientation">VerticalOrientation</a></li>
+<li><a href="#auxiliary">auxiliary</a><ul>
+<li><a href="#graphemebreakproperty">GraphemeBreakProperty</a></li>
+<li><a href="#graphemebreaktest">GraphemeBreakTest</a></li>
+<li><a href="#linebreaktest">LineBreakTest</a></li>
+<li><a href="#sentencebreakproperty">SentenceBreakProperty</a></li>
+<li><a href="#sentencebreaktest">SentenceBreakTest</a></li>
+<li><a href="#wordbreakproperty">WordBreakProperty</a></li>
+<li><a href="#wordbreaktest">WordBreakTest</a></li>
+</ul></li>
+<li><a href="#emoji">emoji</a><ul>
+<li><a href="#emoji-data">emoji-data</a></li>
+<li><a href="#emoji-variation-sequences">emoji-variation-sequences</a></li>
+</ul></li>
+<li><a href="#extracted">extracted</a><ul>
+<li><a href="#derivedname">DerivedName</a></li>
+<li><a href="#derivednumericvalues">DerivedNumericValues</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="arabicshaping">ArabicShaping</h2>
+<pre><code>ArabicShaping-13.0.0.txt
+Date: 2020-01-31, 23:55:00 GMT [KW, RP]
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+This file is a normative contributory data file in the
+Unicode Character Database.
+#
+This file defines the Joining_Type and Joining_Group property
+values for Arabic, Syriac, N&#39;Ko, Mandaic, and Manichaean positional
+shaping, repeating in machine readable form the information
+exemplified in Tables 9-3, 9-8, 9-9, 9-10, 9-14, 9-15, 9-16, 9-19,
+9-20, 10-4, 10-5, 10-6, 10-7, and 19-5 of The Unicode Standard core
+specification. This file also defines Joining_Type values for
+Mongolian, Phags-pa, Psalter Pahlavi, Sogdian, Chorasmian, and Adlam positional shaping,
+and Joining_Type and Joining_Group values for Hanifi Rohingya positional shaping,
+which are not listed in tables in the standard.
+#
+See Sections 9.2, 9.3, 9.5, 10.5, 10.6, 13.4, 14.3, 14.10, 16.14, 19.4, and 19.9
+of The Unicode Standard core specification for more information.
+#
+Each line contains four fields, separated by a semicolon.
+#
+Field 0: the code point, in 4-digit hexadecimal
+form, of a character.
+#
+Field 1: gives a short schematic name for that character.
+The schematic name is descriptive of the shape, based as
+consistently as possible on a name for the skeleton and
+then the diacritic marks applied to the skeleton, if any.
+Note that this schematic name is considered a comment,
+and does not constitute a formal property value.
+#
+Field 2: defines the joining type (property name: Joining_Type)
+R Right_Joining
+L Left_Joining
+D Dual_Joining
+C Join_Causing
+U Non_Joining
+T Transparent
+#
+See Section 9.2, Arabic for more information on these joining types.
+Note that for cursive joining scripts which are typically rendered
+top-to-bottom, rather than right-to-left, Joining_Type=L conventionally
+refers to bottom joining, and Joining_Type=R conventionally refers
+to top joining. See Section 14.3, Phags-pa for more information on the
+interpretation of joining types in vertical layout.
+#
+Field 3: defines the joining group (property name: Joining_Group)
+#
+The values of the joining group are based schematically on character
+names. Where a schematic character name consists of two or more parts
+separated by spaces, the formal Joining_Group property value, as specified in
+PropertyValueAliases.txt, consists of the same name parts joined by
+underscores. Hence, the entry:
+#
+0629; TEH MARBUTA; R; TEH MARBUTA
+#
+corresponds to [Joining_Group = Teh_Marbuta].
+#
+Note: The property value now designated [Joining_Group = Teh_Marbuta_Goal]
+used to apply to both of the following characters
+in earlier versions of the standard:
+#
+U+06C2 ARABIC LETTER HEH GOAL WITH HAMZA ABOVE
+U+06C3 ARABIC LETTER TEH MARBUTA GOAL
+#
+However, it currently applies only to U+06C3, and *not* to U+06C2.
+To avoid destabilizing existing Joining_Group property aliases, the
+prior Joining_Group value for U+06C3 (Hamza_On_Heh_Goal) has been
+retained as a property value alias, despite the fact that it
+no longer applies to its namesake character, U+06C2.
+See PropertyValueAliases.txt.
+#
+When other cursive scripts are added to the Unicode Standard in the
+future, the joining group value of all its letters will default to
+jg=No_Joining_Group in this data file. Other, more specific
+joining group values will be defined only if an explicit proposal
+to define those values exactly has been approved by the UTC. This
+is the convention exemplified by the N&#39;Ko, Mandaic, Mongolian,
+Phags-pa, Psalter Pahlavi, Sogdian, Chorasmian, and Adlam scripts.
+Only the Arabic, Manichaean, and Syriac scripts currently have
+explicit joining group values defined for all characters, including
+those which have only a single character in a particular Joining_Group
+class. Hanifi Rohingya has explicit Joining_Group values assigned only for
+the few characters which share a particular Joining_Group class, but
+assigns jg=No_Joining_Group to all the singletons.
+#
+Note: Code points that are not explicitly listed in this file are
+either of joining type T or U:
+#
+- Those that are not explicitly listed and that are of General Category Mn, Me, or Cf
+have joining type T.
+- All others not explicitly listed have joining type U.
+#
+For an explicit listing of all characters of joining type T, see
+the derived property file DerivedJoiningType.txt.
+#
+#############################################################
+Unicode; Schematic Name; Joining Type; Joining Group
+Arabic Characters</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Joining_Type</th>
+<th style="text-align: left;">Joining_Group</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00258</td>
+<td style="text-align: left;">ARABIC NUMBER SIGN</td>
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">No_Joining_Group</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00259</td>
+<td style="text-align: left;">ARABIC SIGN SANAH</td>
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">No_Joining_Group</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0025A</td>
+<td style="text-align: left;">ARABIC FOOTNOTE MARKER</td>
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">No_Joining_Group</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0025B</td>
+<td style="text-align: left;">ARABIC SIGN SAFHA</td>
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">No_Joining_Group</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0025C</td>
+<td style="text-align: left;">ARABIC SIGN SAMVAT</td>
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">No_Joining_Group</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0025D</td>
+<td style="text-align: left;">ARABIC NUMBER MARK ABOVE</td>
+<td style="text-align: left;">U</td>
+<td style="text-align: left;">No_Joining_Group</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bidibrackets">BidiBrackets</h2>
+<pre><code>BidiBrackets-13.0.0.txt
+Date: 2019-09-09, 19:31:00 GMT [AG, LI, KW]
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Bidi_Paired_Bracket and Bidi_Paired_Bracket_Type Properties
+#
+This file is a normative contributory data file in the Unicode
+Character Database.
+#
+Bidi_Paired_Bracket is a normative property of type Miscellaneous,
+which establishes a mapping between characters that are treated as
+bracket pairs by the Unicode Bidirectional Algorithm.
+#
+Bidi_Paired_Bracket_Type is a normative property of type Enumeration,
+which classifies characters into opening and closing paired brackets
+for the purposes of the Unicode Bidirectional Algorithm.
+#
+This file lists the set of code points with Bidi_Paired_Bracket_Type
+property values Open and Close. The set is derived from the character
+properties General_Category (gc), Bidi_Class (bc), Bidi_Mirrored (Bidi_M),
+and Bidi_Mirroring_Glyph (bmg), as follows: two characters, A and B,
+form a bracket pair if A has gc=Ps and B has gc=Pe, both have bc=ON and
+Bidi_M=Y, and bmg of A is B. Bidi_Paired_Bracket (bpb) maps A to B and
+vice versa, and their Bidi_Paired_Bracket_Type (bpt) property values are
+Open (o) and Close (c), respectively.
+#
+The brackets with ticks U+298D LEFT SQUARE BRACKET WITH TICK IN TOP CORNER
+through U+2990 RIGHT SQUARE BRACKET WITH TICK IN TOP CORNER are paired the
+same way their glyphs form mirror pairs, according to their bmg property
+values. They are not paired on the basis of a diagonal or antidiagonal
+matching of the corner ticks inferred from code point order.
+#
+For legacy reasons, the characters U+FD3E ORNATE LEFT PARENTHESIS and
+U+FD3F ORNATE RIGHT PARENTHESIS do not mirror in bidirectional display
+and therefore do not form a bracket pair.
+#
+The Unicode property value stability policy guarantees that characters
+which have bpt=o or bpt=c also have bc=ON and Bidi_M=Y. As a result, an
+implementation can optimize the lookup of the Bidi_Paired_Bracket_Type
+property values Open and Close by restricting the processing to characters
+with bc=ON.
+#
+The format of the file is three fields separated by a semicolon.
+Field 0: Unicode code point value, represented as a hexadecimal value
+Field 1: Bidi_Paired_Bracket property value, a code point value or &lt;none&gt;
+Field 2: Bidi_Paired_Bracket_Type property value, one of the following:
+o Open
+c Close
+n None
+The names of the characters in field 0 are given in comments at the end
+of each line.
+#
+For information on bidirectional paired brackets, see UAX #9: Unicode
+Bidirectional Algorithm, at http://www.unicode.org/unicode/reports/tr9/
+#
+This file was originally created by Andrew Glass and Laurentiu Iancu
+for Unicode 6.3.</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">Bidi_Paired_Bracket</th>
+<th style="text-align: left;">Bidi_Paired_Bracket_Type</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">U+00029</td>
+<td style="text-align: left;">o</td>
+<td style="text-align: left;">LEFT PARENTHESIS</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00029</td>
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">RIGHT PARENTHESIS</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0005B</td>
+<td style="text-align: left;">U+0005D</td>
+<td style="text-align: left;">o</td>
+<td style="text-align: left;">LEFT SQUARE BRACKET</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0005D</td>
+<td style="text-align: left;">U+0005B</td>
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">RIGHT SQUARE BRACKET</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0007B</td>
+<td style="text-align: left;">U+0007D</td>
+<td style="text-align: left;">o</td>
+<td style="text-align: left;">LEFT CURLY BRACKET</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0007D</td>
+<td style="text-align: left;">U+0007B</td>
+<td style="text-align: left;">c</td>
+<td style="text-align: left;">RIGHT CURLY BRACKET</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bidimirroring">BidiMirroring</h2>
+<pre><code>BidiMirroring-13.0.0.txt
+Date: 2019-09-09, 19:34:00 GMT [KW, LI, RP]
+© 2019 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Bidi_Mirroring_Glyph Property
+#
+This file is an informative contributory data file in the
+Unicode Character Database.
+#
+This data file lists characters that have the Bidi_Mirrored=Yes property
+value, for which there is another Unicode character that typically has a glyph
+that is the mirror image of the original character&#39;s glyph.
+#
+The repertoire covered by the file is Unicode 13.0.0.
+#
+The file contains a list of lines with mappings from one code point
+to another one for character-based mirroring.
+Note that for &quot;real&quot; mirroring, a rendering engine needs to select
+appropriate alternative glyphs, and that many Unicode characters do not
+have a mirror-image Unicode character.
+#
+Each mapping line contains two fields, separated by a semicolon (&#39;;&#39;).
+Each of the two fields contains a code point represented as a
+variable-length hexadecimal value with 4 to 6 digits.
+A comment indicates where the characters are &quot;BEST FIT&quot; mirroring.
+#
+Code points for which Bidi_Mirrored=Yes, but for which no appropriate
+characters exist with mirrored glyphs, are
+listed as comments at the end of the file.
+#
+Formally, the default value of the Bidi_Mirroring_Glyph property
+for each code point is &lt;none&gt;, unless a mapping to
+some other character is specified in this data file. When a code
+point has the default value for the Bidi_Mirroring_Glyph property,
+that means that no other character exists whose glyph is suitable
+for character-based mirroring.
+#
+For information on bidi mirroring, see UAX #9: Unicode Bidirectional Algorithm,
+at http://www.unicode.org/unicode/reports/tr9/
+#
+This file was originally created by Markus Scherer.
+Extended for Unicode 3.2, 4.0, 4.1, 5.0, 5.1, 5.2, and 6.0 by Ken Whistler,
+and for subsequent versions by Ken Whistler, Laurentiu Iancu, and Roozbeh Pournader.
+#
+Historical and Compatibility Information:
+#
+The OpenType Mirroring Pairs List (OMPL) is frozen to match the
+Unicode 5.1 version of the Bidi_Mirroring_Glyph property (2008).
+See https://www.microsoft.com/typography/otspec/ompl.txt
+#
+The Unicode 6.1 version of the Bidi_Mirroring_Glyph property (2011)
+added one mirroring pair: 27CB &lt;--&gt; 27CD.
+#
+The Unicode 11.0 version of the Bidi_Mirroring_Glyph property (2018)
+underwent a substantial revision, to formally recognize all of the
+exact mirroring pairs and &quot;BEST FIT&quot; mirroring pairs that had been
+added after the freezing of the OMPL list. As a result, starting
+with Unicode 11.0, the bmg mapping values more accurately reflect
+the current status of glyphs for Bidi_Mirrored characters in
+the Unicode Standard, but this listing now extends significantly
+beyond the frozen OMPL list. Implementers should be aware of this
+intentional distinction.
+#
+############################################################
+#
+Property:   Bidi_Mirroring_Glyph
+#
+@missing: 0000..10FFFF; &lt;none&gt;</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">Bidi_Mirroring_Glyph</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">U+00029</td>
+<td style="text-align: left;">LEFT PARENTHESIS</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00029</td>
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">RIGHT PARENTHESIS</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0003C</td>
+<td style="text-align: left;">U+0003E</td>
+<td style="text-align: left;">LESS-THAN SIGN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0003E</td>
+<td style="text-align: left;">U+0003C</td>
+<td style="text-align: left;">GREATER-THAN SIGN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0005B</td>
+<td style="text-align: left;">U+0005D</td>
+<td style="text-align: left;">LEFT SQUARE BRACKET</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0005D</td>
+<td style="text-align: left;">U+0005B</td>
+<td style="text-align: left;">RIGHT SQUARE BRACKET</td>
+</tr>
+</tbody>
+</table>
+<h2 id="blocks">Blocks</h2>
+<pre><code>Blocks-13.0.0.txt
+Date: 2019-07-10, 19:06:00 GMT [KW]
+© 2019 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Format:
+Start Code..End Code; Block Name
+================================================
+Note:   When comparing block names, casing, whitespace, hyphens,
+and underbars are ignored.
+For example, &quot;Latin Extended-A&quot; and &quot;latin extended a&quot; are equivalent.
+For more information on the comparison of property values,
+see UAX #44: http://www.unicode.org/reports/tr44/
+#
+All block ranges start with a value where (cp MOD 16) = 0,
+and end with a value where (cp MOD 16) = 15. In other words,
+the last hexadecimal digit of the start of range is ...0
+and the last hexadecimal digit of the end of range is ...F.
+This constraint on block ranges guarantees that allocations
+are done in terms of whole columns, and that code chart display
+never involves splitting columns in the charts.
+#
+All code points not explicitly listed for Block
+have the value No_Block.
+Property:   Block
+#
+@missing: 0000..10FFFF; No_Block</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Block</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">U+0007F</td>
+<td style="text-align: left;">Basic Latin</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00080</td>
+<td style="text-align: left;">U+000FF</td>
+<td style="text-align: left;">Latin-1 Supplement</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00100</td>
+<td style="text-align: left;">U+0017F</td>
+<td style="text-align: left;">Latin Extended-A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00180</td>
+<td style="text-align: left;">U+0024F</td>
+<td style="text-align: left;">Latin Extended-B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00250</td>
+<td style="text-align: left;">U+002AF</td>
+<td style="text-align: left;">IPA Extensions</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+002B0</td>
+<td style="text-align: left;">U+002FF</td>
+<td style="text-align: left;">Spacing Modifier Letters</td>
+</tr>
+</tbody>
+</table>
+<h2 id="casefolding">CaseFolding</h2>
+<pre><code>CaseFolding-13.0.0.txt
+Date: 2019-09-08, 23:30:59 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Case Folding Properties
+#
+This file is a supplement to the UnicodeData file.
+It provides a case folding mapping generated from the Unicode Character Database.
+If all characters are mapped according to the full mapping below, then
+case differences (according to UnicodeData.txt and SpecialCasing.txt)
+are eliminated.
+#
+The data supports both implementations that require simple case foldings
+(where string lengths don&#39;t change), and implementations that allow full case folding
+(where string lengths may grow). Note that where they can be supported, the
+full case foldings are superior: for example, they allow &quot;MASSE&quot; and &quot;Maße&quot; to match.
+#
+All code points not listed in this file map to themselves.
+#
+NOTE: case folding does not preserve normalization formats!
+#
+For information on case folding, including how to have case folding
+preserve normalization formats, see Section 3.13 Default Case Algorithms in
+The Unicode Standard.
+#
+================================================================================
+Format
+================================================================================
+The entries in this file are in the following machine-readable format:
+#
+&lt;code&gt;; &lt;status&gt;; &lt;mapping&gt;; # &lt;name&gt;
+#
+The status field is:
+C: common case folding, common mappings shared by both simple and full mappings.
+F: full case folding, mappings that cause strings to grow in length. Multiple characters are separated by spaces.
+S: simple case folding, mappings to single characters where different from F.
+T: special case for uppercase I and dotted uppercase I
+- For non-Turkic languages, this mapping is normally not used.
+- For Turkic languages (tr, az), this mapping can be used instead of the normal mapping for these characters.
+Note that the Turkic mappings do not maintain canonical equivalence without additional processing.
+See the discussions of case mapping in the Unicode Standard for more information.
+#
+Usage:
+A. To do a simple case folding, use the mappings with status C + S.
+B. To do a full case folding, use the mappings with status C + F.
+#
+The mappings with status T can be used or omitted depending on the desired case-folding
+behavior. (The default option is to exclude them.)
+#
+=================================================================
+Property: Case_Folding
+All code points not explicitly listed for Case_Folding
+have the value C for the status field, and the code point itself for the mapping field.
+=================================================================</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">status</th>
+<th style="text-align: left;">Case_Folding</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00029</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">0061</td>
+<td style="text-align: left;">LATIN CAPITAL LETTER A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0002A</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">0062</td>
+<td style="text-align: left;">LATIN CAPITAL LETTER B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0002B</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">0063</td>
+<td style="text-align: left;">LATIN CAPITAL LETTER C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0002C</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">0064</td>
+<td style="text-align: left;">LATIN CAPITAL LETTER D</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0002D</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">0065</td>
+<td style="text-align: left;">LATIN CAPITAL LETTER E</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0002E</td>
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">0066</td>
+<td style="text-align: left;">LATIN CAPITAL LETTER F</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cjkradicals">CJKRadicals</h2>
+<pre><code>CJKRadicals-13.0.0.txt
+Date: 2019-09-09, 19:38:00 GMT [RC, KW, LI]
+© 2019 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Mapping from CJK radical numbers to characters
+#
+This data file provides a mapping from the CJK radical numbers used
+in the kRSUnicode property to the corresponding character in
+the Kangxi Radicals block or the CJK Radicals Supplement block,
+as well as to a CJK unified ideograph which is formed from that
+radical only.
+#
+There is one line per CJK radical number. Each line contains three
+fields, separated by a semicolon (&#39;;&#39;). The first field is the
+CJK radical number. The second field is the CJK radical character.
+The third field is the CJK unified ideograph.
+#
+CJK radical numbers match the regular expression [1-9][0-9]{0,2}\&#39;?
+and in particular they can end with a U+0027 &#39; APOSTROPHE.
+#
+For more information, see UAX #38: Unicode Han Database (Unihan),
+at http://www.unicode.org/reports/tr38/
+#
+This file was created for Unicode 5.2 by Richard Cook.
+Updated for Unicode 6.0 by Richard Cook.
+Updated for Unicode 6.1 and 6.2 by Ken Whistler,
+and for subsequent versions by Ken Whistler and Laurentiu Iancu.
+#
+####################################################</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">CJKid</th>
+<th style="text-align: left;">Radicals</th>
+<th style="text-align: left;">Unified_Ideograph</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">U+02F00</td>
+<td style="text-align: left;">U+04E00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">U+02F01</td>
+<td style="text-align: left;">U+04E28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">U+02F02</td>
+<td style="text-align: left;">U+04E36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">U+02F03</td>
+<td style="text-align: left;">U+04E3F</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">U+02F04</td>
+<td style="text-align: left;">U+04E59</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">U+02F05</td>
+<td style="text-align: left;">U+04E85</td>
+</tr>
+</tbody>
+</table>
+<h2 id="compositionexclusions">CompositionExclusions</h2>
+<pre><code>CompositionExclusions-13.0.0.txt
+Date: 2019-10-15, 18:27:00 GMT [KW, LI]
+© 2019 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+This file lists the characters for the Composition Exclusion Table
+defined in UAX #15, Unicode Normalization Forms.
+#
+This file is a normative contributory data file in the
+Unicode Character Database.
+#
+For more information, see
+http://www.unicode.org/unicode/reports/tr15/#Primary_Exclusion_List_Table
+#
+For a full derivation of composition exclusions, see the derived property
+Full_Composition_Exclusion in DerivedNormalizationProps.txt
+#
+================================================
+(1) Script Specifics
+#
+This list of characters cannot be derived from the UnicodeData.txt file.
+#
+Included are the following subcategories:
+#
+- Many precomposed characters using a nukta diacritic in the Devanagari,
+Bangla/Bengali, Gurmukhi, or Odia/Oriya scripts.
+- Tibetan letters and subjoined letters with decompositions including 
+U+0FB7 TIBETAN SUBJOINED LETTER HA or U+0FB5 TIBETAN SUBJOINED LETTER SSA.
+- Two two-part Tibetan vowel signs involving top and bottom pieces.
+- A large collection of compatibility precomposed characters for Hebrew
+involving dagesh and/or other combining marks.
+#
+This list is unlikely to grow.
+#
+================================================</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00958</td>
+<td style="text-align: left;">DEVANAGARI LETTER QA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00959</td>
+<td style="text-align: left;">DEVANAGARI LETTER KHHA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0095A</td>
+<td style="text-align: left;">DEVANAGARI LETTER GHHA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0095B</td>
+<td style="text-align: left;">DEVANAGARI LETTER ZA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0095C</td>
+<td style="text-align: left;">DEVANAGARI LETTER DDDHA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0095D</td>
+<td style="text-align: left;">DEVANAGARI LETTER RHA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="derivedage">DerivedAge</h2>
+<pre><code>DerivedAge-13.0.0.txt
+Date: 2019-09-08, 23:30:59 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Unicode Character Database: Derived Property Data
+This file shows when various code points were first assigned in Unicode.
+#
+Notes:
+#
+- The term &#39;assigned&#39; means that a previously reserved code point was assigned
+to be a character (graphic, format, control, or private-use);
+a noncharacter code point; or a surrogate code point.
+For more information, see The Unicode Standard Section 2.4
+#
+- Versions are only tracked from 1.1 onwards, since version 1.0
+predated changes required by the ISO 10646 merger.
+#
+- The Hangul Syllables that were removed from 2.0 are not included in the 1.1 listing.
+#
+- The supplementary private use code points and the non-character code points
+were assigned in version 2.0, but not specifically listed in the UCD
+until versions 3.0 and 3.1 respectively.
+#
+- Contiguous ranges are broken into separate lines where they would cross code point
+types: graphic, format, control, private-use, surrogate, noncharacter
+#
+For details on the contents of each version, see
+http://www.unicode.org/versions/enumeratedversions.html.
+================================================
+Property: Age
+#
+Note: When using the Age property in regular expressions,
+an expression such as &quot;\p{age=3.0}&quot; matches all of the code points
+assigned in Version 3.0--that is, all the code points with a value
+less than or equal to 3.0 for the Age property.
+For more information, see [http://www.unicode.org/reports/tr18/].
+All code points not explicitly listed for Age
+have the value Unassigned (NA).
+@missing: 0000..10FFFF; Unassigned
+================================================
+Age=V1_1
+Assigned as of Unicode 1.1.0 (June, 1993)
+[excluding removed Hangul Syllables]</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Age</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">U+0001F</td>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">[32] <control-0000>..<control-001F></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">U+0007E</td>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">[95] SPACE..TILDE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0007F</td>
+<td style="text-align: left;">U+0009F</td>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">[33] <control-007F>..<control-009F></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+000A0</td>
+<td style="text-align: left;">U+000AC</td>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">[13] NO-BREAK SPACE..NOT SIGN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+000AD</td>
+<td style="text-align: left;">U+000AD</td>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">SOFT HYPHEN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+000AE</td>
+<td style="text-align: left;">U+001F5</td>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">[328] REGISTERED SIGN..LATIN SMALL LETTER G WITH ACUTE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="derivedcoreproperties">DerivedCoreProperties</h2>
+<pre><code>DerivedCoreProperties-13.0.0.txt
+Date: 2020-01-22, 00:07:19 GMT
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+================================================
+Derived Property: Math
+Generated from: Sm + Other_Math</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">dpropname</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+0002B</td>
+<td style="text-align: left;">U+0002B</td>
+<td style="text-align: left;">Math</td>
+<td style="text-align: left;">Sm PLUS SIGN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0003C</td>
+<td style="text-align: left;">U+0003E</td>
+<td style="text-align: left;">Math</td>
+<td style="text-align: left;">Sm [3] LESS-THAN SIGN..GREATER-THAN SIGN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0005E</td>
+<td style="text-align: left;">U+0005E</td>
+<td style="text-align: left;">Math</td>
+<td style="text-align: left;">Sk CIRCUMFLEX ACCENT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0007C</td>
+<td style="text-align: left;">U+0007C</td>
+<td style="text-align: left;">Math</td>
+<td style="text-align: left;">Sm VERTICAL LINE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0007E</td>
+<td style="text-align: left;">U+0007E</td>
+<td style="text-align: left;">Math</td>
+<td style="text-align: left;">Sm TILDE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+000AC</td>
+<td style="text-align: left;">U+000AC</td>
+<td style="text-align: left;">Math</td>
+<td style="text-align: left;">Sm NOT SIGN</td>
+</tr>
+</tbody>
+</table>
+<h2 id="derivednormalizationprops">DerivedNormalizationProps</h2>
+<pre><code>DerivedNormalizationProps-13.0.0.txt
+Date: 2019-09-08, 23:31:08 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+================================================
+Derived Property: FC_NFKC_Closure  (DEPRECATED as of Unicode 6.0.0)
+Generated from computing: b = NFKC(Fold(a)); c = NFKC(Fold(b));
+Then if (c != b) add the mapping from a to c to the set of
+mappings that constitute the FC_NFKC_Closure list
+Uses the full case folding from CaseFolding.txt, without the T option.</code></pre>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 11%" />
+<col style="width: 15%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">nf</th>
+<th style="text-align: left;">Quick_Check</th>
+<th style="text-align: left;">nfSeq</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+0037A</td>
+<td style="text-align: left;">U+0037A</td>
+<td style="text-align: left;">FC_NFKC</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">U+00020 U+003B9</td>
+<td style="text-align: left;">Lm GREEK YPOGEGRAMMENI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+003D2</td>
+<td style="text-align: left;">U+003D2</td>
+<td style="text-align: left;">FC_NFKC</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">U+003C5</td>
+<td style="text-align: left;">L&amp; GREEK UPSILON WITH HOOK SYMBOL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+003D3</td>
+<td style="text-align: left;">U+003D3</td>
+<td style="text-align: left;">FC_NFKC</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">U+003CD</td>
+<td style="text-align: left;">L&amp; GREEK UPSILON WITH ACUTE AND HOOK SYMBOL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+003D4</td>
+<td style="text-align: left;">U+003D4</td>
+<td style="text-align: left;">FC_NFKC</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">U+003CB</td>
+<td style="text-align: left;">L&amp; GREEK UPSILON WITH DIAERESIS AND HOOK SYMBOL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+003F2</td>
+<td style="text-align: left;">U+003F2</td>
+<td style="text-align: left;">FC_NFKC</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">U+003C3</td>
+<td style="text-align: left;">L&amp; GREEK LUNATE SIGMA SYMBOL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+003F9</td>
+<td style="text-align: left;">U+003F9</td>
+<td style="text-align: left;">FC_NFKC</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">U+003C3</td>
+<td style="text-align: left;">L&amp; GREEK CAPITAL LUNATE SIGMA SYMBOL</td>
+</tr>
+</tbody>
+</table>
+<h2 id="eastasianwidth">EastAsianWidth</h2>
+<pre><code>EastAsianWidth-13.0.0.txt
+Date: 2029-01-21, 18:14:00 GMT [KW, LI]
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+East_Asian_Width Property
+#
+This file is a normative contributory data file in the
+Unicode Character Database.
+#
+The format is two fields separated by a semicolon.
+Field 0: Unicode code point value or range of code point values
+Field 1: East_Asian_Width property, consisting of one of the following values:
+&quot;A&quot;, &quot;F&quot;, &quot;H&quot;, &quot;N&quot;, &quot;Na&quot;, &quot;W&quot;
+- All code points, assigned or unassigned, that are not listed
+explicitly are given the value &quot;N&quot;.
+- The unassigned code points in the following blocks default to &quot;W&quot;:
+CJK Unified Ideographs Extension A: U+3400..U+4DBF
+CJK Unified Ideographs:             U+4E00..U+9FFF
+CJK Compatibility Ideographs:       U+F900..U+FAFF
+- All undesignated code points in Planes 2 and 3, whether inside or
+outside of allocated blocks, default to &quot;W&quot;:
+Plane 2:                            U+20000..U+2FFFD
+Plane 3:                            U+30000..U+3FFFD
+#
+Character ranges are specified as for other property files in the
+Unicode Character Database.
+#
+For legacy reasons, there are no spaces before or after the semicolon
+which separates the two fields. The comments following the number sign
+&quot;#&quot; list the General_Category property value or the L&amp; alias of the
+derived value LC, the Unicode character name or names, and, in lines
+with ranges of code points, the code point count in square brackets.
+#
+For more information, see UAX #11: East Asian Width,
+at http://www.unicode.org/reports/tr11/
+#
+@missing: 0000..10FFFF; N</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">East_Asian_Width</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">U+0001F</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">Cc [32] <control-0000>..<control-001F></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">Na</td>
+<td style="text-align: left;">Zs SPACE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00021</td>
+<td style="text-align: left;">U+00023</td>
+<td style="text-align: left;">Na</td>
+<td style="text-align: left;">Po [3] EXCLAMATION MARK..NUMBER SIGN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00024</td>
+<td style="text-align: left;">U+00024</td>
+<td style="text-align: left;">Na</td>
+<td style="text-align: left;">Sc DOLLAR SIGN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00025</td>
+<td style="text-align: left;">U+00027</td>
+<td style="text-align: left;">Na</td>
+<td style="text-align: left;">Po [3] PERCENT SIGN..APOSTROPHE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">Na</td>
+<td style="text-align: left;">Ps LEFT PARENTHESIS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="equivalentunifiedideograph">EquivalentUnifiedIdeograph</h2>
+<pre><code>EquivalentUnifiedIdeograph-13.0.0.txt
+Date: 2019-09-09, 19:41:00 GMT [KL, KW]
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+For documentation, see UAX #44: Unicode Character Database,
+at http://www.unicode.org/reports/tr44/
+#
+This file defines the following property:
+#
+Equivalent_Unified_Ideograph
+#
+This data file lists CJK radicals and CJK strokes (aka characters
+that have the Radical=Yes property or are in the CJK Strokes block)
+for which there are reasonably equivalent CJK unified ideographs in
+that they are visually identical or near-identical.
+#
+The file contains a list of lines with mappings from one code point
+or code point range to an equivalent CJK unified ideograph.
+#
+Each mapping line contains two fields, separated by a semicolon (&#39;;&#39;).
+The first field contains a code point or code point range represented
+as a variable-length hexadecimal value with 4 to 6 digits. The second
+field contains a code point represented as a variable-length
+hexadecimal value with 4 to 6 digits.
+#
+CJK radicals and CJK strokes for which no reasonably equivalent CJK
+unified ideographs exist are listed as comments at the end of the file.
+#
+Formally, the default value of the Equivalent_Unified_Ideograph
+property for each code point is &lt;none&gt;, unless a mapping to some
+other character is specified in this data file. When a code point
+has the default value for the Equivalent_Unified_Ideograph property,
+that means that no other character exists whose representative glyph
+is a reasonably equivalent CJK unified ideograph.
+#
+This file was originally created by Ken Lunde.
+#
+############################################################
+#
+Property: Equivalent_Unified_Ideograph
+#
+@missing: 0000..10FFFF; &lt;none&gt;</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Equivalent_Unified_Ideograph</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+02E81</td>
+<td style="text-align: left;">U+02E81</td>
+<td style="text-align: left;">U+05382</td>
+<td style="text-align: left;">CJK RADICAL CLIFF</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+02E82</td>
+<td style="text-align: left;">U+02E82</td>
+<td style="text-align: left;">U+04E5B</td>
+<td style="text-align: left;">CJK RADICAL SECOND ONE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+02E83</td>
+<td style="text-align: left;">U+02E83</td>
+<td style="text-align: left;">U+04E5A</td>
+<td style="text-align: left;">CJK RADICAL SECOND TWO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+02E84</td>
+<td style="text-align: left;">U+02E84</td>
+<td style="text-align: left;">U+04E59</td>
+<td style="text-align: left;">CJK RADICAL SECOND THREE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+02E85</td>
+<td style="text-align: left;">U+02E85</td>
+<td style="text-align: left;">U+04EBB</td>
+<td style="text-align: left;">CJK RADICAL PERSON</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+02E86</td>
+<td style="text-align: left;">U+02E86</td>
+<td style="text-align: left;">U+05182</td>
+<td style="text-align: left;">CJK RADICAL BOX</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hangulsyllabletype">HangulSyllableType</h2>
+<pre><code>HangulSyllableType-13.0.0.txt
+Date: 2019-09-08, 23:31:10 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+================================================
+Property:   Hangul_Syllable_Type
+All code points not explicitly listed for Hangul_Syllable_Type
+have the value Not_Applicable (NA).
+@missing: 0000..10FFFF; Not_Applicable
+================================================
+Hangul_Syllable_Type=Leading_Jamo</code></pre>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 19%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Hangul_Syllable_Type</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+01100</td>
+<td style="text-align: left;">U+0115F</td>
+<td style="text-align: left;">L</td>
+<td style="text-align: left;">Lo [96] HANGUL CHOSEONG KIYEOK..HANGUL CHOSEONG FILLER</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0A960</td>
+<td style="text-align: left;">U+0A97C</td>
+<td style="text-align: left;">L</td>
+<td style="text-align: left;">Lo [29] HANGUL CHOSEONG TIKEUT-MIEUM..HANGUL CHOSEONG SSANGYEORINHIEUH</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+01160</td>
+<td style="text-align: left;">U+011A7</td>
+<td style="text-align: left;">V</td>
+<td style="text-align: left;">Lo [72] HANGUL JUNGSEONG FILLER..HANGUL JUNGSEONG O-YAE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0D7B0</td>
+<td style="text-align: left;">U+0D7C6</td>
+<td style="text-align: left;">V</td>
+<td style="text-align: left;">Lo [23] HANGUL JUNGSEONG O-YEO..HANGUL JUNGSEONG ARAEA-E</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+011A8</td>
+<td style="text-align: left;">U+011FF</td>
+<td style="text-align: left;">T</td>
+<td style="text-align: left;">Lo [88] HANGUL JONGSEONG KIYEOK..HANGUL JONGSEONG SSANGNIEUN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0D7CB</td>
+<td style="text-align: left;">U+0D7FB</td>
+<td style="text-align: left;">T</td>
+<td style="text-align: left;">Lo [49] HANGUL JONGSEONG NIEUN-RIEUL..HANGUL JONGSEONG PHIEUPH-THIEUTH</td>
+</tr>
+</tbody>
+</table>
+<h2 id="indicpositionalcategory">IndicPositionalCategory</h2>
+<pre><code>IndicPositionalCategory-13.0.0.txt
+Date: 2019-07-23, 00:01:00 GMT [KW, RP]
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+For documentation, see UAX #44: Unicode Character Database,
+at http://www.unicode.org/reports/tr44/
+#
+This file defines the following property:
+#
+Indic_Positional_Category     enumerated property
+#
+Scope: This property is aimed at the problem of
+the specification of syllabic structure for Indic scripts.
+Because dependent vowels (matras), visible viramas, and other
+characters are placed in notional slots around the consonant (or
+consonant cluster) core of an Indic syllable, there may be
+cooccurrence constraints or other interactions. Also, it may be
+desirable, in cases where more than one such character may occur in
+sequence, as for example, in a top slot and a bottom slot, to
+specify preferred orders for spelling. As such, this property
+is designed primarily to supplement the Indic_Syllabic_Category
+property.
+#
+In addition to combining marks associated with Indic scripts, the
+Indic_Positional_Category has non-trivial values for special signs
+associated with Indic_Syllabic_Category=Consonant_Prefixed or
+Indic_Syllabic_Category=Consonant_Preceding_Repha. Those signs
+have General_Category=Lo, rather than being combining marks.
+They occur in initial position in syllabic structure. However, when
+rendered, they appear as marks positioned with respect to another
+base letter (usually above it). Hence, having an explicit value for
+Indic_Positional_Category for those signs can be helpful.
+#
+Note that this property is *not* intended as
+a prescriptive property regarding display or font design,
+for a number of reasons. Good font design requires information
+that is outside the context of a character encoding standard,
+and is best handled in other venues. For Indic dependent
+vowels and similar characters, in particular:
+#
+1. Matra placement may vary somewhat based on typeface design.
+2. Matra placement, even within a single script, may vary
+somewhat according to historic period or local conventions.
+3. Matra placement may be changed by explicit orthographic reform
+decisions.
+4. Matras may ligate in various ways with a consonant (or even
+other elements of a syllable) instead of occurring in a
+discrete location.
+5. Matra display may be contextually determined. This is
+notable, for example, in the Tamil script, where the shape
+and placement of -u and -uu vowels depends strongly on
+which consonant they adjoin.
+#
+Format:
+Field 0  Unicode code point value or range of code point values
+Field 1  Indic_Positional_Category property value
+#
+Field 1 is followed by a comment field, starting with the number sign &#39;#&#39;,
+which shows the General_Category property value, the Unicode character name
+or names, and, in lines with ranges of code points, the code point count in
+square brackets.
+#
+The scripts assessed as containing dependent vowels or similar characters
+in the structural sense used for the Indic_Positional_Category are the
+following:
+#
+Ahom, Balinese, Batak, Bengali, Bhaiksuki, Brahmi, Buginese, Buhid,
+Chakma, Cham, Devanagari, Dives Akuru, Dogra, Grantha, Gujarati,
+Gunjala Gondi, Gurmukhi, Hanunoo, Javanese, Kaithi, Kannada,
+Kharoshthi, Khmer, Khojki, Khudawadi, Lao, Lepcha, Limbu, Makasar,
+Malayalam, Marchen, Masaram Gondi, Meetei Mayek, Modi, Myanmar,
+Nandinagari, Newa, New Tai Lue, Oriya, Rejang, Saurashtra, Sharada,
+Siddham, Sinhala, Soyombo, Sundanese, Syloti Nagri, Tagalog,
+Tagbanwa, Tai Tham, Tai Viet, Takri, Tamil, Telugu, Thai, Tibetan,
+Tirhuta, and Zanabazar Square.
+#
+All characters for all other scripts not in that list
+take the default value for this property.
+#
+See IndicSyllabicCategory.txt for a slightly more extended
+list of Indic scripts, including those which do not have
+positional characters. Currently, those additional
+Indic scripts without positional characters are
+Multani, Phags-pa, and Tai Le.
+#
+Notes:
+#
+1. The following characters are all assigned the positional category Right,
+but may have different positions in some cases:
+* U+0BC1 TAMIL VOWEL SIGN U and U+0BC2 TAMIL VOWEL SIGN UU have
+contextually variable placement in Tamil.
+* U+0D41 MALAYALAM VOWEL SIGN U and U+0D42 MALAYALAM VOWEL SIGN UU form
+complex ligatures with consonants in older Malayalam orthography.
+* U+11341 GRANTHA VOWEL SIGN U and U+11342 GRANTHA VOWEL SIGN UU have
+contextually variable placement in Grantha.
+* U+11440 NEWA VOWEL SIGN O and U+11441 NEWA VOWEL SIGN AU have contextually
+variable placement in Newa.
+#
+2. The following characters are all assigned the positional category Top,
+but may have different positions in some cases:
+* U+1143E NEWA VOWEL SIGN E and U+1143F NEWA VOWEL SIGN AI have contextually
+variable placement in Newa.
+#
+3. The following characters are all assigned the positional category Bottom,
+but may have different positions in some cases:
+* U+102F MYANMAR VOWEL SIGN U and U+1030 MYANMAR VOWEL SIGN UU have
+contextually variable placement in Myanmar.
+* U+1A69 TAI THAM VOWEL SIGN U and U+1A6A TAI THAM VOWEL SIGN UU have
+contextually variable placement in Tai Tham.
+#
+4. The following character is assigned the positional category Left, but
+may have different positions in different styles:
+* U+119D2 NANDINAGARI VOWEL SIGN I has stylistically variable placement
+in Nandinagari.
+================================================
+Property: Indic_Positional_Category
+#
+All code points not explicitly listed for Indic_Positional_Category
+have the value NA (not applicable).
+#
+@missing: 0000..10FFFF; NA
+------------------------------------------------
+Indic_Positional_Category=Right</code></pre>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 24%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Indic_Positional_Category</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00903</td>
+<td style="text-align: left;">U+00903</td>
+<td style="text-align: left;">Right</td>
+<td style="text-align: left;">Mc DEVANAGARI SIGN VISARGA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0093B</td>
+<td style="text-align: left;">U+0093B</td>
+<td style="text-align: left;">Right</td>
+<td style="text-align: left;">Mc DEVANAGARI VOWEL SIGN OOE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0093E</td>
+<td style="text-align: left;">U+0093E</td>
+<td style="text-align: left;">Right</td>
+<td style="text-align: left;">Mc DEVANAGARI VOWEL SIGN AA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00940</td>
+<td style="text-align: left;">U+00940</td>
+<td style="text-align: left;">Right</td>
+<td style="text-align: left;">Mc DEVANAGARI VOWEL SIGN II</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00949</td>
+<td style="text-align: left;">U+0094C</td>
+<td style="text-align: left;">Right</td>
+<td style="text-align: left;">Mc [4] DEVANAGARI VOWEL SIGN CANDRA O..DEVANAGARI VOWEL SIGN AU</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0094F</td>
+<td style="text-align: left;">U+0094F</td>
+<td style="text-align: left;">Right</td>
+<td style="text-align: left;">Mc DEVANAGARI VOWEL SIGN AW</td>
+</tr>
+</tbody>
+</table>
+<h2 id="indicsyllabiccategory">IndicSyllabicCategory</h2>
+<pre><code>IndicSyllabicCategory-13.0.0.txt
+Date: 2019-07-22, 19:55:00 GMT [KW, RP]
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+For documentation, see UAX #44: Unicode Character Database,
+at http://www.unicode.org/reports/tr44/
+#
+This file defines the following property:
+#
+Indic_Syllabic_Category     enumerated property
+#
+Scope: This property is aimed at two general problem
+areas involving the analysis and processing of Indic scripts:
+#
+1. Specification of syllabic structure.
+2. Specification of segmentation rules.
+#
+Both of these problem areas may benefit from having defined subtypes
+of Indic script characters which are relevant to how Indic
+syllables (or aksaras) are constructed. Note that rules for
+syllabic structure in Indic scripts may differ significantly
+from how phonological syllables are defined.
+#
+Format:
+Field 0  Unicode code point value or range of code point values
+Field 1  Indic_Syllabic_Category property value
+#
+Field 1 is followed by a comment field, starting with the number sign &#39;#&#39;,
+which shows the General_Category property value, the Unicode character name
+or names, and, in lines with ranges of code points, the code point count in
+square brackets.
+#
+The scripts assessed as Indic in the structural sense used for the
+Indic_Syllabic_Category are the following:
+#
+Ahom, Balinese, Batak, Bengali, Bhaiksuki, Brahmi, Buginese, Buhid,
+Chakma, Cham, Devanagari, Dives Akuru, Dogra, Grantha, Gujarati,
+Gunjala Gondi, Gurmukhi, Hanunoo, Javanese, Kaithi, Kannada,
+Kayah Li, Kharoshthi, Khmer, Khojki, Khudawadi, Lao, Lepcha, Limbu,
+Mahajani, Makasar, Malayalam, Marchen, Masaram Gondi, Meetei Mayek,
+Modi, Multani, Myanmar, Nandinagari, Newa, New Tai Lue, Oriya,
+Phags-pa, Rejang, Saurashtra, Sharada, Siddham, Sinhala, Soyombo,
+Sundanese, Syloti Nagri, Tagalog, Tagbanwa, Tai Le, Tai Tham,
+Tai Viet, Takri, Tamil, Telugu, Thai, Tibetan, Tirhuta, and
+Zanabazar Square.
+#
+All characters for all other scripts not in that list
+take the default value for this property, unless they
+are individually listed in this data file.
+#
+================================================
+Property: Indic_Syllabic_Category
+#
+All code points not explicitly listed for Indic_Syllabic_Category
+have the value Other.
+#
+@missing: 0000..10FFFF; Other
+================================================
+Indic_Syllabic_Category=Bindu
+Bindu/Anusvara (nasalization or -n)
+[Not derivable]</code></pre>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Indic_Syllabic_Category</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00900</td>
+<td style="text-align: left;">U+00902</td>
+<td style="text-align: left;">Bindu</td>
+<td style="text-align: left;">Mn [3] DEVANAGARI SIGN INVERTED CANDRABINDU..DEVANAGARI SIGN ANUSVARA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00981</td>
+<td style="text-align: left;">U+00981</td>
+<td style="text-align: left;">Bindu</td>
+<td style="text-align: left;">Mn BENGALI SIGN CANDRABINDU</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00982</td>
+<td style="text-align: left;">U+00982</td>
+<td style="text-align: left;">Bindu</td>
+<td style="text-align: left;">Mc BENGALI SIGN ANUSVARA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+009FC</td>
+<td style="text-align: left;">U+009FC</td>
+<td style="text-align: left;">Bindu</td>
+<td style="text-align: left;">Lo BENGALI LETTER VEDIC ANUSVARA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00A01</td>
+<td style="text-align: left;">U+00A02</td>
+<td style="text-align: left;">Bindu</td>
+<td style="text-align: left;">Mn [2] GURMUKHI SIGN ADAK BINDI..GURMUKHI SIGN BINDI</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00A70</td>
+<td style="text-align: left;">U+00A70</td>
+<td style="text-align: left;">Bindu</td>
+<td style="text-align: left;">Mn GURMUKHI TIPPI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jamo">Jamo</h2>
+<pre><code>Jamo-13.0.0.txt
+Date: 2019-09-09, 19:46:00 GMT [KW, LI]
+© 2019 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+This file defines the Jamo_Short_Name property.
+#
+See Section 3.12 of The Unicode Standard, Version 13.0
+for more information.
+#
+Each line contains two fields, separated by a semicolon.
+#
+The first field gives the code point, in 4-digit hexadecimal
+form, of a conjoining jamo character that participates in the
+algorithmic determination of Hangul syllable character names.
+The second field gives the Jamo_Short_Name as a one-, two-,
+or three-character ASCII string (or in one case, for U+110B,
+the null string).
+#
+#############################################################</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">Jamo_Short_Name</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+01100</td>
+<td style="text-align: left;">G</td>
+<td style="text-align: left;">HANGUL CHOSEONG KIYEOK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+01101</td>
+<td style="text-align: left;">GG</td>
+<td style="text-align: left;">HANGUL CHOSEONG SSANGKIYEOK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+01102</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">HANGUL CHOSEONG NIEUN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+01103</td>
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">HANGUL CHOSEONG TIKEUT</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+01104</td>
+<td style="text-align: left;">DD</td>
+<td style="text-align: left;">HANGUL CHOSEONG SSANGTIKEUT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+01105</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">HANGUL CHOSEONG RIEUL</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linebreak">LineBreak</h2>
+<pre><code>LineBreak-13.0.0.txt
+Date: 2020-02-17, 07:43:02 GMT [KW, LI]
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Line_Break Property
+#
+This file is a normative contributory data file in the
+Unicode Character Database.
+#
+The format is two fields separated by a semicolon.
+Field 0: Unicode code point value or range of code point values
+Field 1: Line_Break property, consisting of one of the following values:
+Non-tailorable:
+&quot;BK&quot;, &quot;CM&quot;, &quot;CR&quot;, &quot;GL&quot;, &quot;LF&quot;, &quot;NL&quot;, &quot;SP&quot;, &quot;WJ&quot;, &quot;ZW&quot;, &quot;ZWJ&quot;
+Tailorable:
+&quot;AI&quot;, &quot;AL&quot;, &quot;B2&quot;, &quot;BA&quot;, &quot;BB&quot;, &quot;CB&quot;, &quot;CJ&quot;, &quot;CL&quot;, &quot;CP&quot;, &quot;EB&quot;,
+&quot;EM&quot;, &quot;EX&quot;, &quot;H2&quot;, &quot;H3&quot;, &quot;HL&quot;, &quot;HY&quot;, &quot;ID&quot;, &quot;IN&quot;, &quot;IS&quot;, &quot;JL&quot;,
+&quot;JT&quot;, &quot;JV&quot;, &quot;NS&quot;, &quot;NU&quot;, &quot;OP&quot;, &quot;PO&quot;, &quot;PR&quot;, &quot;QU&quot;, &quot;RI&quot;, &quot;SA&quot;,
+&quot;SG&quot;, &quot;SY&quot;, &quot;XX&quot;
+- All code points, assigned and unassigned, that are not listed
+explicitly are given the value &quot;XX&quot;.
+- The unassigned code points in the following blocks default to &quot;ID&quot;:
+CJK Unified Ideographs Extension A: U+3400..U+4DBF
+CJK Unified Ideographs:             U+4E00..U+9FFF
+CJK Compatibility Ideographs:       U+F900..U+FAFF
+- All undesignated code points in Planes 2 and 3, whether inside or
+outside of allocated blocks, default to &quot;ID&quot;:
+Plane 2:                            U+20000..U+2FFFD
+Plane 3:                            U+30000..U+3FFFD
+- All unassigned code points in the following Plane 1 ranges, whether
+inside or outside of allocated blocks, also default to &quot;ID&quot;:
+Plane 1 range:                      U+1F000..U+1FAFF
+Plane 1 range:                      U+1FC00..U+1FFFD
+- The unassigned code points in the following block default to &quot;PR&quot;:
+Currency Symbols:                   U+20A0..U+20CF
+#
+Character ranges are specified as for other property files in the
+Unicode Character Database.
+#
+For legacy reasons, there are no spaces before or after the semicolon
+which separates the two fields. The comments following the number sign
+&quot;#&quot; list the General_Category property value or the L&amp; alias of the
+derived value LC, the Unicode character name or names, and, in lines
+with ranges of code points, the code point count in square brackets.
+#
+For more information, see UAX #14: Unicode Line Breaking Algorithm,
+at http://www.unicode.org/reports/tr14/
+#
+@missing: 0000..10FFFF; XX</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Line_Break</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">U+00008</td>
+<td style="text-align: left;">CM</td>
+<td style="text-align: left;">Cc [9] <control-0000>..<control-0008></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00009</td>
+<td style="text-align: left;">U+00009</td>
+<td style="text-align: left;">BA</td>
+<td style="text-align: left;">Cc <control-0009></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0000A</td>
+<td style="text-align: left;">U+0000A</td>
+<td style="text-align: left;">LF</td>
+<td style="text-align: left;">Cc <control-000A></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0000B</td>
+<td style="text-align: left;">U+0000C</td>
+<td style="text-align: left;">BK</td>
+<td style="text-align: left;">Cc [2] <control-000B>..<control-000C></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0000D</td>
+<td style="text-align: left;">U+0000D</td>
+<td style="text-align: left;">CR</td>
+<td style="text-align: left;">Cc <control-000D></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0000E</td>
+<td style="text-align: left;">U+0001F</td>
+<td style="text-align: left;">CM</td>
+<td style="text-align: left;">Cc [18] <control-000E>..<control-001F></td>
+</tr>
+</tbody>
+</table>
+<h2 id="namealiases">NameAliases</h2>
+<pre><code>NameAliases-13.0.0.txt
+Date: 2019-09-09, 19:47:00 GMT [KW, LI]
+© 2019 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+This file is a normative contributory data file in the
+Unicode Character Database.
+#
+This file defines the formal name aliases for Unicode characters.
+#
+For informative aliases, see NamesList.txt
+#
+The formal name aliases are divided into five types, each with a distinct label.
+#
+Type Labels:
+#
+1. correction
+Corrections for serious problems in the character names
+2. control
+ISO 6429 names for C0 and C1 control functions, and other
+commonly occurring names for control codes
+3. alternate
+A few widely used alternate names for format characters
+4. figment
+Several documented labels for C1 control code points which
+were never actually approved in any standard
+5. abbreviation
+Commonly occurring abbreviations (or acronyms) for control codes,
+format characters, spaces, and variation selectors
+#
+The formal name aliases are part of the Unicode character namespace, which
+includes the character names and the names of named character sequences.
+The inclusion of ISO 6429 names and other commonly occurring names and
+abbreviations for control codes and format characters as formal name aliases
+is to help avoid name collisions between Unicode character names and the
+labels which commonly appear in text and/or in implementations such as regex, for
+control codes (which for historical reasons have no Unicode character name)
+or for format characters.
+#
+For documentation, see NamesList.html and http://www.unicode.org/reports/tr44/
+#
+FORMAT
+#
+Each line has three fields, as described here:
+#
+First field:  Code point
+Second field: Alias
+Third field:  Type
+#
+The type labels used are defined above. As for property values, comparisons
+of type labels should ignore case.
+#
+The type labels can be mapped to other strings for display, if desired.
+#
+In case multiple aliases are assigned, additional aliases
+are provided on separate lines. Parsers of this data file should
+take note that the same code point can (and does) occur more than once.
+#
+Note that currently the only instances of multiple aliases of the same
+type for a single code point are either of type &quot;control&quot; or &quot;abbreviation&quot;.
+An alias of type &quot;abbreviation&quot; can, in principle, be added for any code
+point, although currently aliases of type &quot;correction&quot; do not have
+any additional aliases of type &quot;abbreviation&quot;. Such relationships
+are not enforced by stability policies.
+#
+#-----------------------------------------------------------------</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">Name_Alias</th>
+<th style="text-align: left;">Name_Alias_Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">control</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">NUL</td>
+<td style="text-align: left;">abbreviation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00001</td>
+<td style="text-align: left;">START OF HEADING</td>
+<td style="text-align: left;">control</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00001</td>
+<td style="text-align: left;">SOH</td>
+<td style="text-align: left;">abbreviation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00002</td>
+<td style="text-align: left;">START OF TEXT</td>
+<td style="text-align: left;">control</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00002</td>
+<td style="text-align: left;">STX</td>
+<td style="text-align: left;">abbreviation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="namedsequences">NamedSequences</h2>
+<pre><code>NamedSequences-13.0.0.txt
+Date: 2020-01-22, 19:12:00 GMT [KW, LI]
+© 2020 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Unicode Named Character Sequences
+#
+This file is a normative contributory data file in the Unicode
+Character Database.
+#
+Format:
+Name of Sequence; Code Point Sequence for USI
+#
+Code point sequences in the Unicode Character Database
+use spaces as delimiters. The corresponding format for a
+UCS Sequence Identifier (USI) in ISO/IEC 10646 uses
+comma delimitation and angle brackets. Thus, a Unicode
+named character sequence of the form:
+#
+EXAMPLE NAME;1000 1001 1002
+#
+in this data file, would correspond to an ISO/IEC 10646 USI
+as follows:
+#
+&lt;1000, 1001, 1002&gt;
+#
+For more information, see UAX #34: Unicode Named Character
+Sequences, at http://www.unicode.org/unicode/reports/tr34/
+#
+Note: The order of entries in this file is not significant.
+However, entries are generally in script order corresponding
+to block order in the Unicode Standard, to make it easier
+to find entries in the list.
+================================================
+Named keycap sequences for telephone keypad (used for emoji)
+Provisional, 2015-05-05
+FE0F added to the sequences, 2016-05-11
+Approved 2017-05-12</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">cp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">KEYCAP NUMBER SIGN</td>
+<td style="text-align: left;">U+00023 U+0FE0F U+020E3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">KEYCAP ASTERISK</td>
+<td style="text-align: left;">U+0002A U+0FE0F U+020E3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">KEYCAP DIGIT ZERO</td>
+<td style="text-align: left;">U+00030 U+0FE0F U+020E3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">KEYCAP DIGIT ONE</td>
+<td style="text-align: left;">U+00031 U+0FE0F U+020E3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">KEYCAP DIGIT TWO</td>
+<td style="text-align: left;">U+00032 U+0FE0F U+020E3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">KEYCAP DIGIT THREE</td>
+<td style="text-align: left;">U+00033 U+0FE0F U+020E3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="namedsequencesprov">NamedSequencesProv</h2>
+<pre><code>NamedSequencesProv-13.0.0.txt
+Date: 2020-01-22, 19:32:00 GMT [KW, LI]
+© 2020 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Provisional Unicode Named Character Sequences
+#
+Note: This data file contains those named character
+sequences which have been designated to be provisional,
+rather than fully approved.
+#
+Format:
+Name of Sequence; Code Point Sequence for USI
+#
+Code point sequences in the Unicode Character Database
+use spaces as delimiters. The corresponding format for a
+UCS Sequence Identifier (USI) in ISO/IEC 10646 uses
+comma delimitation and angle brackets. Thus, a Unicode
+named character sequence of the form:
+#
+EXAMPLE NAME;1000 1001 1002
+#
+in this data file, would correspond to an ISO/IEC 10646 USI
+as follows:
+#
+&lt;1000, 1001, 1002&gt;
+#
+For more information, see UAX #34: Unicode Named Character
+Sequences, at http://www.unicode.org/unicode/reports/tr34/
+#
+Note: The order of entries in this file is not significant.
+However, entries are generally in script order corresponding
+to block order in the Unicode Standard, to make it easier
+to find entries currently in the list.
+================================================
+Provisional entries for NamedSequences.txt.
+Entries that correspond to Indic characters with nuktas
+that are also listed in CompositionExclusions.txt.
+These characters decompose for normalized text, even
+in NFC. Having named sequences for these helps in
+certain specifications, including Label Generation Rules (LGR)
+for Internationalized Domain Names (IDN).
+#
+Provisional 2020-01-16</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">cp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">DEVANAGARI SEQUENCE FOR LETTER QA</td>
+<td style="text-align: left;">U+00915 U+0093C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DEVANAGARI SEQUENCE FOR LETTER KHHA</td>
+<td style="text-align: left;">U+00916 U+0093C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DEVANAGARI SEQUENCE FOR LETTER GHHA</td>
+<td style="text-align: left;">U+00917 U+0093C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DEVANAGARI SEQUENCE FOR LETTER ZA</td>
+<td style="text-align: left;">U+0091C U+0093C</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DEVANAGARI SEQUENCE FOR LETTER DDDHA</td>
+<td style="text-align: left;">U+00921 U+0093C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DEVANAGARI SEQUENCE FOR LETTER RHA</td>
+<td style="text-align: left;">U+00922 U+0093C</td>
+</tr>
+</tbody>
+</table>
+<h2 id="normalizationcorrections">NormalizationCorrections</h2>
+<pre><code>NormalizationCorrections-13.0.0.txt
+Date: 2019-09-09, 19:50:00 GMT [KW, LI]
+© 2019 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+This file is a normative contributory data file in the
+Unicode Character Database.
+#
+The normalization stability policy of the Unicode Consortium
+ordinarily precludes any change to the decomposition
+for any character, once established in a relevant version
+of the UnicodeData.txt data file. However, under certain
+exceptional (and rare) conditions, an error in a decomposition
+mapping may be discovered that is truly just an unintended
+typo in the data, and not a matter of dubious interpretation.
+#
+Whenever such an error may be found, and if it meets the
+requirements for possible exceptions to normalization
+stability, the correction is entered in this data file,
+so that any implementation depending on absolute stability
+of normalization, *including* any errors in the data, can
+safely reconstruct the exact state of the data tables at
+any given version of Unicode.
+#
+Currently this list has exactly six entries in it, one for the
+typo found and corrected in Corrigendum #3, and five for
+the typos and misidentifications found and corrected in
+Corrigendum #4. All efforts
+will be made to keep the entries limited to just those fixes.
+#
+Interpretation of the fields:
+Field 0: Unicode code point
+Field 1: Original (erroneous) decomposition
+Field 2: Corrected decomposition
+Field 3: Version of Unicode for which the correction was
+entered into UnicodeData.txt, in n.n.n format.
+Comment: Indicates the Unicode Corrigendum which documents
+the correction
+#
+For more information, see UAX #15, Unicode Normalization Forms.
+#</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">cp_err</th>
+<th style="text-align: left;">cp_decomp</th>
+<th style="text-align: left;">version</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+0F951</td>
+<td style="text-align: left;">U+096FB</td>
+<td style="text-align: left;">U+0964B</td>
+<td style="text-align: left;">3.2.0</td>
+<td style="text-align: left;">Corrigendum 3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+2F868</td>
+<td style="text-align: left;">U+2136A</td>
+<td style="text-align: left;">U+036FC</td>
+<td style="text-align: left;">4.0.0</td>
+<td style="text-align: left;">Corrigendum 4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+2F874</td>
+<td style="text-align: left;">U+05F33</td>
+<td style="text-align: left;">U+05F53</td>
+<td style="text-align: left;">4.0.0</td>
+<td style="text-align: left;">Corrigendum 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+2F91F</td>
+<td style="text-align: left;">U+043AB</td>
+<td style="text-align: left;">U+243AB</td>
+<td style="text-align: left;">4.0.0</td>
+<td style="text-align: left;">Corrigendum 4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+2F95F</td>
+<td style="text-align: left;">U+07AAE</td>
+<td style="text-align: left;">U+07AEE</td>
+<td style="text-align: left;">4.0.0</td>
+<td style="text-align: left;">Corrigendum 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+2F9BF</td>
+<td style="text-align: left;">U+04D57</td>
+<td style="text-align: left;">U+045D7</td>
+<td style="text-align: left;">4.0.0</td>
+<td style="text-align: left;">Corrigendum 4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="propertyaliases">PropertyAliases</h2>
+<pre><code>PropertyAliases-13.0.0.txt
+Date: 2019-10-23, 03:46:32 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+This file contains aliases for properties used in the UCD.
+These names can be used for XML formats of UCD data, for regular-expression
+property tests, and other programmatic textual descriptions of Unicode data.
+#
+The names may be translated in appropriate environments, and additional
+aliases may be useful.
+#
+FORMAT
+#
+Each line has two or more fields, separated by semicolons.
+#
+First Field: The first field is the short name for the property.
+It is typically an abbreviation, but in a number of cases it is simply
+a duplicate of the &quot;long name&quot; in the second field.
+For Unihan database tags, the short name is actually a longer string than
+the tag specified in the second field.
+#
+Second Field: The second field is the long name for the property,
+typically the formal name used in documentation about the property.
+#
+The above are the preferred aliases. Other aliases may be listed in additional fields.
+#
+Loose matching should be applied to all property names and property values, with
+the exception of String Property values. With loose matching of property names and
+values, the case distinctions, whitespace, and &#39;_&#39; are ignored. For Numeric Property
+values, numeric equivalencies are applied: thus &quot;01.00&quot; is equivalent to &quot;1&quot;.
+#
+NOTE: Property value names are NOT unique across properties. For example:
+#
+AL means Arabic Letter for the Bidi_Class property, and
+AL means Above_Left for the Combining_Class property, and
+AL means Alphabetic for the Line_Break property.
+#
+In addition, some property names may be the same as some property value names.
+For example:
+#
+sc means the Script property, and
+Sc means the General_Category property value Currency_Symbol (Sc)
+#
+The combination of property value and property name is, however, unique.
+#
+For more information, see UAX #44, Unicode Character Database, and
+UTS #18, Unicode Regular Expressions.
+================================================
+================================================
+Numeric Properties
+================================================</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">propcat</th>
+<th style="text-align: left;">propabbr</th>
+<th style="text-align: left;">propname</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Numeric Properties</td>
+<td style="text-align: left;">cjkAccountingNumeric</td>
+<td style="text-align: left;">kAccountingNumeric</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Numeric Properties</td>
+<td style="text-align: left;">cjkOtherNumeric</td>
+<td style="text-align: left;">kOtherNumeric</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Numeric Properties</td>
+<td style="text-align: left;">cjkPrimaryNumeric</td>
+<td style="text-align: left;">kPrimaryNumeric</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Numeric Properties</td>
+<td style="text-align: left;">nv</td>
+<td style="text-align: left;">Numeric_Value</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">String Properties</td>
+<td style="text-align: left;">cf</td>
+<td style="text-align: left;">Case_Folding</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">String Properties</td>
+<td style="text-align: left;">cjkCompatibilityVariant</td>
+<td style="text-align: left;">kCompatibilityVariant</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+<h2 id="propertyvaluealiases">PropertyValueAliases</h2>
+<pre><code>PropertyValueAliases-13.0.0.txt
+Date: 2019-11-13, 21:52:10 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+This file contains aliases for property values used in the UCD.
+These names can be used for XML formats of UCD data, for regular-expression
+property tests, and other programmatic textual descriptions of Unicode data.
+#
+The names may be translated in appropriate environments, and additional
+aliases may be useful.
+#
+FORMAT
+#
+Each line describes a property value name.
+This consists of three or more fields, separated by semicolons.
+#
+First Field: The first field describes the property for which that
+property value name is used.
+#
+Second Field: The second field is the short name for the property value.
+It is typically an abbreviation, but in a number of cases it is simply
+a duplicate of the &quot;long name&quot; in the third field.
+#
+Third Field: The third field is the long name for the property value, 
+typically the formal name used in documentation about the property value.
+#
+In the case of Canonical_Combining_Class (ccc), there are 4 fields: 
+The second field is numeric, the third is the short name, and the fourth is the long name.
+#
+The above are the preferred aliases. Other aliases may be listed in additional fields.
+#
+Loose matching should be applied to all property names and property values, with
+the exception of String Property values. With loose matching of property names and
+values, the case distinctions, whitespace, hyphens, and &#39;_&#39; are ignored.
+For Numeric Property values, numeric equivalence is applied: thus &quot;01.00&quot;
+is equivalent to &quot;1&quot;.
+#
+NOTE: Property value names are NOT unique across properties. For example:
+#
+AL means Arabic Letter for the Bidi_Class property, and
+AL means Above_Left for the Canonical_Combining_Class property, and
+AL means Alphabetic for the Line_Break property.
+#
+In addition, some property names may be the same as some property value names.
+For example:
+#
+sc means the Script property, and
+Sc means the General_Category property value Currency_Symbol (Sc)
+#
+The combination of property value and property name is, however, unique.
+#
+For more information, see UAX #44, Unicode Character Database, and
+UTS #18, Unicode Regular Expressions.
+================================================
+ASCII_Hex_Digit (AHex)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">propname</th>
+<th style="text-align: left;">prop</th>
+<th style="text-align: left;">val</th>
+<th style="text-align: left;">valname</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ASCII_Hex_Digit (AHex)</td>
+<td style="text-align: left;">AHex</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">; F ; False</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASCII_Hex_Digit (AHex)</td>
+<td style="text-align: left;">AHex</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">; T ; True</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Age (age)</td>
+<td style="text-align: left;">age</td>
+<td style="text-align: left;">1.1</td>
+<td style="text-align: left;">V1_1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Age (age)</td>
+<td style="text-align: left;">age</td>
+<td style="text-align: left;">2.0</td>
+<td style="text-align: left;">V2_0</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Age (age)</td>
+<td style="text-align: left;">age</td>
+<td style="text-align: left;">2.1</td>
+<td style="text-align: left;">V2_1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Age (age)</td>
+<td style="text-align: left;">age</td>
+<td style="text-align: left;">3.0</td>
+<td style="text-align: left;">V3_0</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="proplist">PropList</h2>
+<pre><code>PropList-13.0.0.txt
+Date: 2019-11-27, 03:13:28 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+================================================</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">propname</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00009</td>
+<td style="text-align: left;">U+0000D</td>
+<td style="text-align: left;">White_Space</td>
+<td style="text-align: left;">Cc [5] <control-0009>..<control-000D></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">White_Space</td>
+<td style="text-align: left;">Zs SPACE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00085</td>
+<td style="text-align: left;">U+00085</td>
+<td style="text-align: left;">White_Space</td>
+<td style="text-align: left;">Cc <control-0085></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+000A0</td>
+<td style="text-align: left;">U+000A0</td>
+<td style="text-align: left;">White_Space</td>
+<td style="text-align: left;">Zs NO-BREAK SPACE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+01680</td>
+<td style="text-align: left;">U+01680</td>
+<td style="text-align: left;">White_Space</td>
+<td style="text-align: left;">Zs OGHAM SPACE MARK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+02000</td>
+<td style="text-align: left;">U+0200A</td>
+<td style="text-align: left;">White_Space</td>
+<td style="text-align: left;">Zs [11] EN QUAD..HAIR SPACE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scriptextensions">ScriptExtensions</h2>
+<pre><code>ScriptExtensions-13.0.0.txt
+Date: 2020-01-22, 00:07:43 GMT
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+The Script_Extensions property indicates which characters are commonly used
+with more than one script, but with a limited number of scripts.
+For each code point, there is one or more property values.  Each such value is a Script property value.
+For more information, see:
+UAX #24, Unicode Script Property: http://www.unicode.org/reports/tr24/
+Especially the sections:
+http://www.unicode.org/reports/tr24/#Assignment_Script_Values
+http://www.unicode.org/reports/tr24/#Assignment_ScriptX_Values
+#
+Each Script_Extensions value in this file consists of a set
+of one or more abbreviated Script property values. The ordering of the
+values in that set is not material, but for stability in presentation
+it is given here as alphabetical.
+#
+The Script_Extensions values are presented in sorted order in the file.
+They are sorted first by the number of Script property values in their sets,
+and then alphabetically by first differing Script property value.
+#
+Following each distinct Script_Extensions value is the list of code
+points associated with that value, listed in code point order.
+#
+All code points not explicitly listed for Script_Extensions
+have as their value the corresponding Script property value
+#
+@missing: 0000..10FFFF; &lt;script&gt;
+================================================
+Property:   Script_Extensions
+================================================
+Script_Extensions=Beng</code></pre>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 16%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Script_Extensions</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+01CF7</td>
+<td style="text-align: left;">U+01CF7</td>
+<td style="text-align: left;">Beng</td>
+<td style="text-align: left;">Mc VEDIC SIGN ATIKRAMA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+01CD1</td>
+<td style="text-align: left;">U+01CD1</td>
+<td style="text-align: left;">Deva</td>
+<td style="text-align: left;">Mn VEDIC TONE SHARA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+01CD4</td>
+<td style="text-align: left;">U+01CD4</td>
+<td style="text-align: left;">Deva</td>
+<td style="text-align: left;">Mn VEDIC SIGN YAJURVEDIC MIDLINE SVARITA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+01CDB</td>
+<td style="text-align: left;">U+01CDB</td>
+<td style="text-align: left;">Deva</td>
+<td style="text-align: left;">Mn VEDIC TONE TRIPLE SVARITA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+01CDE</td>
+<td style="text-align: left;">U+01CDF</td>
+<td style="text-align: left;">Deva</td>
+<td style="text-align: left;">Mn [2] VEDIC TONE TWO DOTS BELOW..VEDIC TONE THREE DOTS BELOW</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+01CE2</td>
+<td style="text-align: left;">U+01CE8</td>
+<td style="text-align: left;">Deva</td>
+<td style="text-align: left;">Mn [7] VEDIC SIGN VISARGA SVARITA..VEDIC SIGN VISARGA ANUDATTA WITH TAIL</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scripts">Scripts</h2>
+<pre><code>Scripts-13.0.0.txt
+Date: 2020-01-22, 00:07:43 GMT
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+For more information, see:
+UAX #24, Unicode Script Property: http://www.unicode.org/reports/tr24/
+Especially the sections:
+http://www.unicode.org/reports/tr24/#Assignment_Script_Values
+http://www.unicode.org/reports/tr24/#Assignment_ScriptX_Values
+#
+================================================
+Property:   Script
+All code points not explicitly listed for Script
+have the value Unknown (Zzzz).
+@missing: 0000..10FFFF; Unknown
+================================================</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Script</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">U+0001F</td>
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">Cc [32] <control-0000>..<control-001F></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">Zs SPACE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00021</td>
+<td style="text-align: left;">U+00023</td>
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">Po [3] EXCLAMATION MARK..NUMBER SIGN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00024</td>
+<td style="text-align: left;">U+00024</td>
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">Sc DOLLAR SIGN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00025</td>
+<td style="text-align: left;">U+00027</td>
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">Po [3] PERCENT SIGN..APOSTROPHE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">Ps LEFT PARENTHESIS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="specialcasing">SpecialCasing</h2>
+<pre><code>SpecialCasing-13.0.0.txt
+Date: 2019-09-08, 23:31:24 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Special Casing
+#
+This file is a supplement to the UnicodeData.txt file. It does not define any
+properties, but rather provides additional information about the casing of
+Unicode characters, for situations when casing incurs a change in string length
+or is dependent on context or locale. For compatibility, the UnicodeData.txt
+file only contains simple case mappings for characters where they are one-to-one
+and independent of context and language. The data in this file, combined with
+the simple case mappings in UnicodeData.txt, defines the full case mappings
+Lowercase_Mapping (lc), Titlecase_Mapping (tc), and Uppercase_Mapping (uc).
+#
+Note that the preferred mechanism for defining tailored casing operations is
+the Unicode Common Locale Data Repository (CLDR). For more information, see the
+discussion of case mappings and case algorithms in the Unicode Standard.
+#
+All code points not listed in this file that do not have a simple case mappings
+in UnicodeData.txt map to themselves.
+================================================================================
+Format
+================================================================================
+The entries in this file are in the following machine-readable format:
+#
+&lt;code&gt;; &lt;lower&gt;; &lt;title&gt;; &lt;upper&gt;; (&lt;condition_list&gt;;)? # &lt;comment&gt;
+#
+&lt;code&gt;, &lt;lower&gt;, &lt;title&gt;, and &lt;upper&gt; provide the respective full case mappings
+of &lt;code&gt;, expressed as character values in hex. If there is more than one character,
+they are separated by spaces. Other than as used to separate elements, spaces are
+to be ignored.
+#
+The &lt;condition_list&gt; is optional. Where present, it consists of one or more language IDs
+or casing contexts, separated by spaces. In these conditions:
+- A condition list overrides the normal behavior if all of the listed conditions are true.
+- The casing context is always the context of the characters in the original string,
+NOT in the resulting string.
+- Case distinctions in the condition list are not significant.
+- Conditions preceded by &quot;Not_&quot; represent the negation of the condition.
+The condition list is not represented in the UCD as a formal property.
+#
+A language ID is defined by BCP 47, with &#39;-&#39; and &#39;_&#39; treated equivalently.
+#
+A casing context for a character is defined by Section 3.13 Default Case Algorithms
+of The Unicode Standard.
+#
+Parsers of this file must be prepared to deal with future additions to this format:
+* Additional contexts
+* Additional fields
+================================================================================
+================================================================================
+Unconditional mappings
+================================================================================
+The German es-zed is special--the normal mapping is to SS.
+Note: the titlecase should never occur in practice. It is equal to titlecase(uppercase(&lt;es-zed&gt;))</code></pre>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 15%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 4%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">Lowercase_Mapping</th>
+<th style="text-align: left;">Titlecase_Mapping</th>
+<th style="text-align: left;">Uppercase_Mapping</th>
+<th style="text-align: left;">cond</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+000DF</td>
+<td style="text-align: left;">U+000DF</td>
+<td style="text-align: left;">U+00053 U+00073</td>
+<td style="text-align: left;">U+00053 U+00053</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">LATIN SMALL LETTER SHARP S</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00130</td>
+<td style="text-align: left;">U+00069 U+00307</td>
+<td style="text-align: left;">U+00130</td>
+<td style="text-align: left;">U+00130</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">LATIN CAPITAL LETTER I WITH DOT ABOVE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0FB00</td>
+<td style="text-align: left;">U+0FB00</td>
+<td style="text-align: left;">U+00046 U+00066</td>
+<td style="text-align: left;">U+00046 U+00046</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">LATIN SMALL LIGATURE FF</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0FB01</td>
+<td style="text-align: left;">U+0FB01</td>
+<td style="text-align: left;">U+00046 U+00069</td>
+<td style="text-align: left;">U+00046 U+00049</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">LATIN SMALL LIGATURE FI</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0FB02</td>
+<td style="text-align: left;">U+0FB02</td>
+<td style="text-align: left;">U+00046 U+0006C</td>
+<td style="text-align: left;">U+00046 U+0004C</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">LATIN SMALL LIGATURE FL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0FB03</td>
+<td style="text-align: left;">U+0FB03</td>
+<td style="text-align: left;">U+00046 U+00066 U+00069</td>
+<td style="text-align: left;">U+00046 U+00046 U+00049</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">LATIN SMALL LIGATURE FFI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="standardizedvariants">StandardizedVariants</h2>
+<pre><code>StandardizedVariants-13.0.0.txt
+Date: 2019-05-21, 17:56:00 GMT [KW, LI, RP]
+© 2019 Unicode®, Inc.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Specification of the variation sequences that are defined in the
+Unicode Standard.
+#
+This file is a normative contributory data file in the
+Unicode Character Database.
+#
+Standardized variation sequences are defined in this file.
+#
+Ideographic variation sequences are defined according to the registration
+process specified in UTS #37, and are listed in the Ideographic
+Variation Database.
+#
+Emoji variation sequences are defined in the file
+emoji-variation-sequences.txt, documented in UTS #51, Unicode Emoji.
+#
+Only those three types of variation sequences
+are sanctioned for use by conformant implementations.
+In all other cases, use of a variation selector character does
+not change the visual appearance of the preceding base character
+from what it would have had in the absence of the variation selector.
+#
+For more information on standardized variation sequences,
+see Section 23.4, Variation Selectors,
+in The Unicode Standard, Version 13.0.
+#
+For more information on the Ideographic Variation Database,
+see http://www.unicode.org/ivd/
+#
+For more information on emoji variation sequences,
+see http://www.unicode.org/reports/tr51/
+#
+Format:
+Field 0: the variation sequence
+Field 1: the description of the desired appearance
+Field 2: where the appearance is only different in particular shaping environments
+this field lists them. The possible values are: isolate, initial, medial, final.
+If more than one is present, there are spaces between them.
+=============================
+Mathematical</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">description</th>
+<th style="text-align: left;">position</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00030 U+0FE00</td>
+<td style="text-align: left;">short diagonal stroke form</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">DIGIT ZERO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+02205 U+0FE00</td>
+<td style="text-align: left;">zero with long diagonal stroke overlay form</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">EMPTY SET</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+02229 U+0FE00</td>
+<td style="text-align: left;">with serifs</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">INTERSECTION</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0222A U+0FE00</td>
+<td style="text-align: left;">with serifs</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">UNION</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+02268 U+0FE00</td>
+<td style="text-align: left;">with vertical stroke</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">LESS-THAN BUT NOT EQUAL TO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+02269 U+0FE00</td>
+<td style="text-align: left;">with vertical stroke</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">GREATER-THAN BUT NOT EQUAL TO</td>
+</tr>
+</tbody>
+</table>
+<h2 id="unicodedata">UnicodeData</h2>
+<pre><code>NA</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 2%" />
+<col style="width: 3%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
+<col style="width: 3%" />
+<col style="width: 6%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 4%" />
+<col style="width: 6%" />
+<col style="width: 4%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">General_Category</th>
+<th style="text-align: left;">Canonical_Combining_Class</th>
+<th style="text-align: left;">Bidi_Class</th>
+<th style="text-align: left;">Decomposition_Type</th>
+<th style="text-align: left;">Decomposition_Mapping</th>
+<th style="text-align: left;">Numeric_Type_decimal</th>
+<th style="text-align: left;">Numeric_Type_digit</th>
+<th style="text-align: left;">Numeric_Value</th>
+<th style="text-align: left;">Bidi_Mirrored</th>
+<th style="text-align: left;">Unicode_1_Name</th>
+<th style="text-align: left;">ISO_Comment</th>
+<th style="text-align: left;">Simple_Uppercase_Mapping</th>
+<th style="text-align: left;">Simple_Lowercase_Mapping</th>
+<th style="text-align: left;">Simple_Titlecase_Mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;"><control></td>
+<td style="text-align: left;">Cc</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00001</td>
+<td style="text-align: left;">U+00001</td>
+<td style="text-align: left;"><control></td>
+<td style="text-align: left;">Cc</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">START OF HEADING</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00002</td>
+<td style="text-align: left;">U+00002</td>
+<td style="text-align: left;"><control></td>
+<td style="text-align: left;">Cc</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">START OF TEXT</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00003</td>
+<td style="text-align: left;">U+00003</td>
+<td style="text-align: left;"><control></td>
+<td style="text-align: left;">Cc</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">END OF TEXT</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00004</td>
+<td style="text-align: left;">U+00004</td>
+<td style="text-align: left;"><control></td>
+<td style="text-align: left;">Cc</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">END OF TRANSMISSION</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00005</td>
+<td style="text-align: left;">U+00005</td>
+<td style="text-align: left;"><control></td>
+<td style="text-align: left;">Cc</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">BN</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">ENQUIRY</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="verticalorientation">VerticalOrientation</h2>
+<pre><code>VerticalOrientation-13.0.0.txt
+Date: 2019-10-07, 05:27:01 GMT [EM, KI, LI]
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Vertical_Orientation (vo) Property
+#
+This file defines the Vertical_Orientation property. See UAX #50:
+Unicode Vertical Text Layout, at http://www.unicode.org/reports/tr50/
+#
+The format of the file is two fields separated by a semicolon.
+Field 0: Unicode code point value or range of code point values in
+hexadecimal form
+Field 1: Vertical_Orientation property value, one of the following:
+U - Upright, the same orientation as in the code charts
+R - Rotated 90 degrees clockwise compared to the code charts
+Tu - Transformed typographically, with fallback to Upright
+Tr - Transformed typographically, with fallback to Rotated
+#
+- Certain ranges of unassigned code points default to U. These ranges
+are mostly associated with CJK scripts and punctuation, or with
+a small number of other scripts which are predominantly Upright.
+The private use areas also default to U, because of their most
+common use for CJK. In the following list of explicit code points
+and ranges, all unassigned code points default to U:
+Canadian Syllabics Extended:        U+18B0..U+18FF
+Reserved Default_Ignorable_Code_Point:      U+2065
+Number Forms:                       U+2150..U+218F
+Control Pictures &amp; OCR              U+2400..U+245F
+Symbols:                            U+2BB8..U+2BFF
+CJK-Related &amp; Yi:                   U+2E80..U+A4CF
+Hangul Jamo Extended-A:             U+A960..U+A97F
+Hangul Syllables &amp; Jamo Extended-B: U+AC00..U+D7FF
+PUA &amp; CJK Compatibility Ideographs: U+E000..U+FAFF
+Vertical Forms:                     U+FE10..U+FE1F
+Small Form Variants:                U+FE50..U+FE6F
+Fullwidth Forms:                            U+FFE7
+Specials:                           U+FFF0..U+FFF8
+Siddham:                           U+11580..U+115FF
+Zanabazar Square &amp; Soyombo:        U+11A00..U+11AAF
+Egyptian Hieroglyphs &amp; Controls:   U+13000..U+1343F
+Anatolian Hieroglyphs:             U+14400..U+1467F
+Ideographic Symbols &amp; Tangut:      U+16FE0..U+18AFF
+Khitan Small Script &amp; Tangut Sup:  U+18B00..U+18D8F
+Kana Extended-A &amp; Small Kana Ext:  U+1B100..U+1B16F
+Nushu:                             U+1B170..U+1B2FF
+Musical Symbols:                   U+1D000..U+1D1FF
+Mayan Numerals:                    U+1D2E0..U+1D2FF
+Symbols &amp; Rods:                    U+1D300..U+1D37F
+Sutton SignWriting:                U+1D800..U+1DAAF
+Game Symbols:                      U+1F000..U+1F0FF
+Enclosed Symbols:                  U+1F100..U+1F2FF
+Symbols:                           U+1F680..U+1F7FF
+Symbols and Pictographs:           U+1F900..U+1F9FF
+Chess Symbols &amp; Pictographs Ext-A: U+1FA00..U+1FAFF
+Plane 2:                           U+20000..U+2FFFD
+Plane 3:                           U+30000..U+3FFFD
+Plane 15 PUA:                      U+F0000..U+FFFFD
+Plane 16 PUA:                     U+100000..U+10FFFD
+#
+- All other code points, assigned and unassigned, that are not listed
+explicitly in the data section of this file are given the value R.
+#
+The comments following the number sign &quot;#&quot; list the General_Category
+property value or the L&amp; alias of the derived value LC, the Unicode
+character name or names, and, in lines with ranges of code points,
+the code point count in square brackets.
+#
+@missing: 0000..10FFFF; R</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Vertical_Orientation</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00000</td>
+<td style="text-align: left;">U+0001F</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Cc [32] <control-0000>..<control-001F></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Zs SPACE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00021</td>
+<td style="text-align: left;">U+00023</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Po [3] EXCLAMATION MARK..NUMBER SIGN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00024</td>
+<td style="text-align: left;">U+00024</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Sc DOLLAR SIGN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00025</td>
+<td style="text-align: left;">U+00027</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Po [3] PERCENT SIGN..APOSTROPHE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">U+00028</td>
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">Ps LEFT PARENTHESIS</td>
+</tr>
+</tbody>
+</table>
+<h1 id="auxiliary">auxiliary</h1>
+<h2 id="graphemebreakproperty">GraphemeBreakProperty</h2>
+<pre><code>GraphemeBreakProperty-13.0.0.txt
+Date: 2019-10-21, 14:30:35 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+================================================
+Property:   Grapheme_Cluster_Break
+All code points not explicitly listed for Grapheme_Cluster_Break
+have the value Other (XX).
+@missing: 0000..10FFFF; Other
+================================================</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Grapheme_Cluster_Break</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00600</td>
+<td style="text-align: left;">U+00605</td>
+<td style="text-align: left;">Prepend</td>
+<td style="text-align: left;">Cf [6] ARABIC NUMBER SIGN..ARABIC NUMBER MARK ABOVE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+006DD</td>
+<td style="text-align: left;">U+006DD</td>
+<td style="text-align: left;">Prepend</td>
+<td style="text-align: left;">Cf ARABIC END OF AYAH</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0070F</td>
+<td style="text-align: left;">U+0070F</td>
+<td style="text-align: left;">Prepend</td>
+<td style="text-align: left;">Cf SYRIAC ABBREVIATION MARK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+008E2</td>
+<td style="text-align: left;">U+008E2</td>
+<td style="text-align: left;">Prepend</td>
+<td style="text-align: left;">Cf ARABIC DISPUTED END OF AYAH</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00D4E</td>
+<td style="text-align: left;">U+00D4E</td>
+<td style="text-align: left;">Prepend</td>
+<td style="text-align: left;">Lo MALAYALAM LETTER DOT REPH</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+110BD</td>
+<td style="text-align: left;">U+110BD</td>
+<td style="text-align: left;">Prepend</td>
+<td style="text-align: left;">Cf KAITHI NUMBER SIGN</td>
+</tr>
+</tbody>
+</table>
+<h2 id="graphemebreaktest">GraphemeBreakTest</h2>
+<pre><code>GraphemeBreakTest-13.0.0.txt
+Date: 2019-11-15, 19:49:10 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Default Grapheme_Cluster_Break Test
+#
+Format:
+&lt;string&gt; (# &lt;comment&gt;)?
+&lt;string&gt; contains hex Unicode code points, with
+÷ wherever there is a break opportunity, and
+× wherever there is not.
+&lt;comment&gt; the format can change, but currently it shows:
+- the sample character name
+- (x) the Grapheme_Cluster_Break property value for the sample character
+- [x] the rule that determines whether there is a break or not,
+as listed in the Rules section of GraphemeBreakTest.html
+#
+These samples may be extended or changed in the future.
+#</code></pre>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">string</th>
+<th style="text-align: left;">comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">÷ 0020 ÷ 0020 ÷</td>
+<td style="text-align: left;">÷ [0.2] SPACE (Other) ÷ [999.0] SPACE (Other) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0020 × 0308 ÷ 0020 ÷</td>
+<td style="text-align: left;">÷ [0.2] SPACE (Other) × [9.0] COMBINING DIAERESIS (Extend_ExtCccZwj) ÷ [999.0] SPACE (Other) ÷ [0.3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">÷ 0020 ÷ 000D ÷</td>
+<td style="text-align: left;">÷ [0.2] SPACE (Other) ÷ [5.0] &lt;CARRIAGE RETURN (CR)&gt; (CR) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0020 × 0308 ÷ 000D ÷</td>
+<td style="text-align: left;">÷ [0.2] SPACE (Other) × [9.0] COMBINING DIAERESIS (Extend_ExtCccZwj) ÷ [5.0] &lt;CARRIAGE RETURN (CR)&gt; (CR) ÷ [0.3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">÷ 0020 ÷ 000A ÷</td>
+<td style="text-align: left;">÷ [0.2] SPACE (Other) ÷ [5.0] &lt;LINE FEED (LF)&gt; (LF) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0020 × 0308 ÷ 000A ÷</td>
+<td style="text-align: left;">÷ [0.2] SPACE (Other) × [9.0] COMBINING DIAERESIS (Extend_ExtCccZwj) ÷ [5.0] &lt;LINE FEED (LF)&gt; (LF) ÷ [0.3]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linebreaktest">LineBreakTest</h2>
+<pre><code>LineBreakTest-13.0.0.txt
+Date: 2019-11-21, 16:13:36 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Default Line_Break Test
+#
+Format:
+&lt;string&gt; (# &lt;comment&gt;)?
+&lt;string&gt; contains hex Unicode code points, with
+÷ wherever there is a break opportunity, and
+× wherever there is not.
+&lt;comment&gt; the format can change, but currently it shows:
+- the sample character name
+- (x) the Line_Break property value for the sample character
+- [x] the rule that determines whether there is a break or not,
+as listed in the Rules section of LineBreakTest.html
+#
+Note:
+The Line_Break tests use tailoring of numbers described in
+Example 7 of Section 8.2, &quot;Examples of Customization&quot; of UAX #14.
+#
+These samples may be extended or changed in the future.
+#</code></pre>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">string</th>
+<th style="text-align: left;">comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">× 0023 × 0023 ÷</td>
+<td style="text-align: left;">× [0.3] NUMBER SIGN (AL) × [28.0] NUMBER SIGN (AL) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">× 0023 × 0020 ÷ 0023 ÷</td>
+<td style="text-align: left;">× [0.3] NUMBER SIGN (AL) × [7.01] SPACE (SP) ÷ [18.0] NUMBER SIGN (AL) ÷ [0.3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">× 0023 × 0308 × 0023 ÷</td>
+<td style="text-align: left;">× [0.3] NUMBER SIGN (AL) × [9.0] COMBINING DIAERESIS (CM1_CM) × [28.0] NUMBER SIGN (AL) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">× 0023 × 0308 × 0020 ÷ 0023 ÷</td>
+<td style="text-align: left;">× [0.3] NUMBER SIGN (AL) × [9.0] COMBINING DIAERESIS (CM1_CM) × [7.01] SPACE (SP) ÷ [18.0] NUMBER SIGN (AL) ÷ [0.3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">× 0023 ÷ 2014 ÷</td>
+<td style="text-align: left;">× [0.3] NUMBER SIGN (AL) ÷ [999.0] EM DASH (B2) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">× 0023 × 0020 ÷ 2014 ÷</td>
+<td style="text-align: left;">× [0.3] NUMBER SIGN (AL) × [7.01] SPACE (SP) ÷ [18.0] EM DASH (B2) ÷ [0.3]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sentencebreakproperty">SentenceBreakProperty</h2>
+<pre><code>SentenceBreakProperty-13.0.0.txt
+Date: 2019-11-27, 03:13:39 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+================================================
+Property:   Sentence_Break
+All code points not explicitly listed for Sentence_Break
+have the value Other (XX).
+@missing: 0000..10FFFF; Other
+================================================</code></pre>
+<table>
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 6%" />
+<col style="width: 12%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Sentence_Break</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+0000D</td>
+<td style="text-align: left;">U+0000D</td>
+<td style="text-align: left;">CR</td>
+<td style="text-align: left;">Cc <control-000D></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0000A</td>
+<td style="text-align: left;">U+0000A</td>
+<td style="text-align: left;">LF</td>
+<td style="text-align: left;">Cc <control-000A></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00300</td>
+<td style="text-align: left;">U+0036F</td>
+<td style="text-align: left;">Extend</td>
+<td style="text-align: left;">Mn [112] COMBINING GRAVE ACCENT..COMBINING LATIN SMALL LETTER X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00483</td>
+<td style="text-align: left;">U+00487</td>
+<td style="text-align: left;">Extend</td>
+<td style="text-align: left;">Mn [5] COMBINING CYRILLIC TITLO..COMBINING CYRILLIC POKRYTIE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00488</td>
+<td style="text-align: left;">U+00489</td>
+<td style="text-align: left;">Extend</td>
+<td style="text-align: left;">Me [2] COMBINING CYRILLIC HUNDRED THOUSANDS SIGN..COMBINING CYRILLIC MILLIONS SIGN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00591</td>
+<td style="text-align: left;">U+005BD</td>
+<td style="text-align: left;">Extend</td>
+<td style="text-align: left;">Mn [45] HEBREW ACCENT ETNAHTA..HEBREW POINT METEG</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sentencebreaktest">SentenceBreakTest</h2>
+<pre><code>SentenceBreakTest-13.0.0.txt
+Date: 2019-11-20, 22:27:22 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Default Sentence_Break Test
+#
+Format:
+&lt;string&gt; (# &lt;comment&gt;)?
+&lt;string&gt; contains hex Unicode code points, with
+÷ wherever there is a break opportunity, and
+× wherever there is not.
+&lt;comment&gt; the format can change, but currently it shows:
+- the sample character name
+- (x) the Sentence_Break property value for the sample character
+- [x] the rule that determines whether there is a break or not,
+as listed in the Rules section of SentenceBreakTest.html
+#
+These samples may be extended or changed in the future.
+#</code></pre>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">string</th>
+<th style="text-align: left;">comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">÷ 0001 × 0001 ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [998.0] <START OF HEADING> (Other) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0001 × 0308 × 0001 ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [5.0] COMBINING DIAERESIS (Extend_FE) × [998.0] <START OF HEADING> (Other) ÷ [0.3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">÷ 0001 × 000D ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [998.0] &lt;CARRIAGE RETURN (CR)&gt; (CR) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0001 × 0308 × 000D ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [5.0] COMBINING DIAERESIS (Extend_FE) × [998.0] &lt;CARRIAGE RETURN (CR)&gt; (CR) ÷ [0.3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">÷ 0001 × 000A ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [998.0] &lt;LINE FEED (LF)&gt; (LF) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0001 × 0308 × 000A ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [5.0] COMBINING DIAERESIS (Extend_FE) × [998.0] &lt;LINE FEED (LF)&gt; (LF) ÷ [0.3]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wordbreakproperty">WordBreakProperty</h2>
+<pre><code>WordBreakProperty-13.0.0.txt
+Date: 2020-01-22, 00:07:44 GMT
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+================================================
+Property:   Word_Break
+All code points not explicitly listed for Word_Break
+have the value Other (XX).
+@missing: 0000..10FFFF; Other
+================================================</code></pre>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Word_Break</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00022</td>
+<td style="text-align: left;">U+00022</td>
+<td style="text-align: left;">Double_Quote</td>
+<td style="text-align: left;">Po QUOTATION MARK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00027</td>
+<td style="text-align: left;">U+00027</td>
+<td style="text-align: left;">Single_Quote</td>
+<td style="text-align: left;">Po APOSTROPHE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+005D0</td>
+<td style="text-align: left;">U+005EA</td>
+<td style="text-align: left;">Hebrew_Letter</td>
+<td style="text-align: left;">Lo [27] HEBREW LETTER ALEF..HEBREW LETTER TAV</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+005EF</td>
+<td style="text-align: left;">U+005F2</td>
+<td style="text-align: left;">Hebrew_Letter</td>
+<td style="text-align: left;">Lo [4] HEBREW YOD TRIANGLE..HEBREW LIGATURE YIDDISH DOUBLE YOD</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0FB1D</td>
+<td style="text-align: left;">U+0FB1D</td>
+<td style="text-align: left;">Hebrew_Letter</td>
+<td style="text-align: left;">Lo HEBREW LETTER YOD WITH HIRIQ</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0FB1F</td>
+<td style="text-align: left;">U+0FB28</td>
+<td style="text-align: left;">Hebrew_Letter</td>
+<td style="text-align: left;">Lo [10] HEBREW LIGATURE YIDDISH YOD YOD PATAH..HEBREW LETTER WIDE TAV</td>
+</tr>
+</tbody>
+</table>
+<h2 id="wordbreaktest">WordBreakTest</h2>
+<pre><code>WordBreakTest-13.0.0.txt
+Date: 2019-11-20, 22:27:23 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+Default Word_Break Test
+#
+Format:
+&lt;string&gt; (# &lt;comment&gt;)?
+&lt;string&gt; contains hex Unicode code points, with
+÷ wherever there is a break opportunity, and
+× wherever there is not.
+&lt;comment&gt; the format can change, but currently it shows:
+- the sample character name
+- (x) the Word_Break property value for the sample character
+- [x] the rule that determines whether there is a break or not,
+as listed in the Rules section of WordBreakTest.html
+#
+These samples may be extended or changed in the future.
+#</code></pre>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">string</th>
+<th style="text-align: left;">comment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">÷ 0001 ÷ 0001 ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) ÷ [999.0] <START OF HEADING> (Other) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0001 × 0308 ÷ 0001 ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [4.0] COMBINING DIAERESIS (Extend_FE) ÷ [999.0] <START OF HEADING> (Other) ÷ [0.3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">÷ 0001 ÷ 000D ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) ÷ [3.2] &lt;CARRIAGE RETURN (CR)&gt; (CR) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0001 × 0308 ÷ 000D ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [4.0] COMBINING DIAERESIS (Extend_FE) ÷ [3.2] &lt;CARRIAGE RETURN (CR)&gt; (CR) ÷ [0.3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">÷ 0001 ÷ 000A ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) ÷ [3.2] &lt;LINE FEED (LF)&gt; (LF) ÷ [0.3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">÷ 0001 × 0308 ÷ 000A ÷</td>
+<td style="text-align: left;">÷ [0.2] <START OF HEADING> (Other) × [4.0] COMBINING DIAERESIS (Extend_FE) ÷ [3.2] &lt;LINE FEED (LF)&gt; (LF) ÷ [0.3]</td>
+</tr>
+</tbody>
+</table>
+<h1 id="emoji">emoji</h1>
+<h2 id="emoji-data">emoji-data</h2>
+<pre><code>emoji-data.txt
+Date: 2020-01-28, 20:52:38 GMT
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Emoji Data for UTS #51
+Version: 13.0
+#
+For documentation and usage, see http://www.unicode.org/reports/tr51
+#
+Format: 
+&lt;codepoint(s)&gt; ; &lt;property&gt; # &lt;comments&gt; 
+Note: there is no guarantee as to the structure of whitespace or comments
+#
+Characters and sequences are listed in code point order. Users should be shown a more natural order.
+See the CLDR collation order for Emoji.
+================================================
+All omitted code points have Emoji=No 
+@missing: 0000..10FFFF  ; Emoji ; No</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Emoji</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00023</td>
+<td style="text-align: left;">U+00023</td>
+<td style="text-align: left;">Emoji</td>
+<td style="text-align: left;">E0.0 [1] (#️) number sign</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0002A</td>
+<td style="text-align: left;">U+0002A</td>
+<td style="text-align: left;">Emoji</td>
+<td style="text-align: left;">E0.0 [1] (*️) asterisk</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00030</td>
+<td style="text-align: left;">U+00039</td>
+<td style="text-align: left;">Emoji</td>
+<td style="text-align: left;">E0.0 [10] (0️..9️) digit zero..digit nine</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+000A9</td>
+<td style="text-align: left;">U+000A9</td>
+<td style="text-align: left;">Emoji</td>
+<td style="text-align: left;">E0.6 [1] (©️) copyright</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+000AE</td>
+<td style="text-align: left;">U+000AE</td>
+<td style="text-align: left;">Emoji</td>
+<td style="text-align: left;">E0.6 [1] (®️) registered</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0203C</td>
+<td style="text-align: left;">U+0203C</td>
+<td style="text-align: left;">Emoji</td>
+<td style="text-align: left;">E0.6 [1] (‼️) double exclamation mark</td>
+</tr>
+</tbody>
+</table>
+<h2 id="emoji-variation-sequences">emoji-variation-sequences</h2>
+<pre><code>emoji-variation-sequences.txt
+Date: 2020-01-21, 07:15:05 GMT
+© 2020 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Emoji Variation Sequences for UTS #51
+Version: 13.0
+#
+For documentation and usage, see http://www.unicode.org/reports/tr51
+#</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp</th>
+<th style="text-align: left;">description</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00023 U+0FE0E</td>
+<td style="text-align: left;">text style</td>
+<td style="text-align: left;">(1.1) NUMBER SIGN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00023 U+0FE0F</td>
+<td style="text-align: left;">emoji style</td>
+<td style="text-align: left;">(1.1) NUMBER SIGN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+0002A U+0FE0E</td>
+<td style="text-align: left;">text style</td>
+<td style="text-align: left;">(1.1) ASTERISK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+0002A U+0FE0F</td>
+<td style="text-align: left;">emoji style</td>
+<td style="text-align: left;">(1.1) ASTERISK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00030 U+0FE0E</td>
+<td style="text-align: left;">text style</td>
+<td style="text-align: left;">(1.1) DIGIT ZERO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00030 U+0FE0F</td>
+<td style="text-align: left;">emoji style</td>
+<td style="text-align: left;">(1.1) DIGIT ZERO</td>
+</tr>
+</tbody>
+</table>
+<h1 id="extracted">extracted</h1>
+<h2 id="derivedname">DerivedName</h2>
+<pre><code>DerivedName-13.0.0.txt
+Date: 2019-09-08, 23:31:08 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+#
+This file lists the values of the Name property.
+This property is specified by the derivation documented in
+Section 4.8 of the Unicode Standard, Version 13.0,
+based on the Name field in UnicodeData.txt,
+the Jamo_Short_Name property in Jamo.txt,
+and a specified list of pattern strings used to derive names
+for certain ranges of characters from their code points.
+This file provides a full listing of the derived values
+so that implementations do not have to properly
+code that derivation.
+#
+The format is two fields separated by a semicolon.
+Field 0: Unicode code point value or range of code point values
+Field 1: Name property value or pattern.
+#
+• Values containing a * character are patterns which
+use the placeholder * in place of the code point in hex.
+In such cases, the name property value for any code point in Field 0
+is formed by replacing the &#39;*&#39; with that code point value
+in the usual 4- to 6-digit hexadecimal format.
+#
+UAX #42 and its data files use a similar convention,
+except that the metacharacter there is &#39;#&#39;.
+#
+For example, the Name property value of U+4E12,
+generated from the pattern string &quot;CJK UNIFIED IDEOGRAPH-*&quot;,
+is CJK UNIFIED IDEOGRAPH-4E12.
+Similarly, the Name property value of U+2F89F,
+generated from the pattern string &quot;CJK COMPATIBILITY IDEOGRAPH-*&quot;,
+is CJK COMPATIBILITY IDEOGRAPH-2F89F.
+#</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">U+00020</td>
+<td style="text-align: left;">SPACE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00021</td>
+<td style="text-align: left;">U+00021</td>
+<td style="text-align: left;">EXCLAMATION MARK</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00022</td>
+<td style="text-align: left;">U+00022</td>
+<td style="text-align: left;">QUOTATION MARK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00023</td>
+<td style="text-align: left;">U+00023</td>
+<td style="text-align: left;">NUMBER SIGN</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00024</td>
+<td style="text-align: left;">U+00024</td>
+<td style="text-align: left;">DOLLAR SIGN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00025</td>
+<td style="text-align: left;">U+00025</td>
+<td style="text-align: left;">PERCENT SIGN</td>
+</tr>
+</tbody>
+</table>
+<h2 id="derivednumericvalues">DerivedNumericValues</h2>
+<pre><code>DerivedNumericValues-13.0.0.txt
+Date: 2019-09-08, 23:31:10 GMT
+© 2019 Unicode®, Inc.
+Unicode and the Unicode Logo are registered trademarks of Unicode, Inc. in the U.S. and other countries.
+For terms of use, see http://www.unicode.org/terms_of_use.html
+#
+Unicode Character Database
+For documentation, see http://www.unicode.org/reports/tr44/
+================================================
+Derived Property:   Numeric_Value
+Field 1:
+The values are based on field 8 of UnicodeData.txt, plus the fields
+kAccountingNumeric, kOtherNumeric, kPrimaryNumeric in the Unicode Han Database (Unihan).
+The derivations for these values are as follows.
+Numeric_Value = the value of kAccountingNumeric, kOtherNumeric, or kPrimaryNumeric, if they exist; otherwise
+Numeric_Value = the value of field 8, if it exists; otherwise
+Numeric_Value = NaN
+Field 2:
+This field is empty; it used to be a copy of the numeric type.
+#
+Field 3:
+This field was added to this extracted data as of Unicode 5.1.0,
+expressing the same numeric value either as a whole integer
+where possible, or as a rational fraction such as &quot;1/6&quot;.
+#
+WARNING: Certain values, such as 0.16666667, are repeating fractions.
+Although they are only printed with a limited number of decimal places
+in this file, they should be expressed to the limits of the precision
+available when used.
+#
+================================================</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">cp_lo</th>
+<th style="text-align: left;">cp_hi</th>
+<th style="text-align: left;">Numeric_Value</th>
+<th style="text-align: left;">empty</th>
+<th style="text-align: left;">Symbolic_Value</th>
+<th style="text-align: left;">comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">U+00F33</td>
+<td style="text-align: left;">U+00F33</td>
+<td style="text-align: left;">-0.5</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">-1/2</td>
+<td style="text-align: left;">No TIBETAN DIGIT HALF ZERO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00030</td>
+<td style="text-align: left;">U+00030</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Nd DIGIT ZERO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+00660</td>
+<td style="text-align: left;">U+00660</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Nd ARABIC-INDIC DIGIT ZERO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+006F0</td>
+<td style="text-align: left;">U+006F0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Nd EXTENDED ARABIC-INDIC DIGIT ZERO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">U+007C0</td>
+<td style="text-align: left;">U+007C0</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Nd NKO DIGIT ZERO</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">U+00966</td>
+<td style="text-align: left;">U+00966</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">Nd DEVANAGARI DIGIT ZERO</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
