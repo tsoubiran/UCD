@@ -4,22 +4,7 @@ This a list of all UCD files included in this repo with a link to their descript
 
 Whenever possible, `data.frame` column names match those listed in the PropertyAliases file.
 
-Some `data.frame` are a little different form the original txt files&nbsp;:
-
-UnicodeData&nbsp;: for backward compatibility, ranges in the original UnicodeData.txt file are specified by entries for the start and end characters of the range while ucd.udata has a single range per row. This means we have 
-
-|cp_lo |cp_hi |Name |
-|------|------|-----|
-|13312|19903|<CJK Ideograph Extension A, First>..<CJK Ideograph Extension A, Last>|
-
-instead of 
-
-|cp |Name |
-|---|-----|
-|13312|<CJK Ideograph Extension A, First>|
-|19903|<CJK Ideograph Extension A, Last>|
-
-PropertyValueAliases&nbsp;: the ucd.propValal `data.frame` has some extra columns extracted form the commented lines
+The PropertyValueAliases&nbsp; `data.frame` is a little different form the original txt files&nbsp; and contains has some extra columns extracted from the commented lines.
 
 |File Name | `data.frame` Name |
 |----------|-------------------|

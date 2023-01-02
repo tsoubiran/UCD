@@ -1,10 +1,436 @@
+##__________________________________________________________________________________________________
 ##
 ##
+##
+ucd.mkdir <- function(destdir, dnm=c("ucd", "unihan", "uca", "ivd", "security"), exec=F){
+  ##
+  mkdir <- function(nm, exec){
+    ##
+    cat( nm )
+    ##
+    if(
+      !dir.exists(nm)
+    ){
+      # cat("", nm, "")
+      ##
+      if( exec ){
+        # cat("", nm, "")
+        ##
+        if( dir.create(nm) ){
+          cat(" created", "\n")
+          # T
+          "C"
+        }else{
+          ##
+          stop("could not be create", nm, " file")
+          ##
+          F
+        }
+      }else{
+        cat(" does not exists", "\n")
+        # T
+        NA_character_
+      }
+    }else{
+      cat(" already exists", "\n")
+      # T
+      "E"
+    }
+  }
+  ##
+  if( missing(destdir)) stop("missing destdir")
+  ##
+  status <- character(0L)
+  ## 
+  for( i in 1:length(dnm) ){
+    ##
+    rv <- mkdir(
+        paste( destdir, dnm[i], sep="/")
+        , exec=exec
+    )
+    ##
+    status <- c(status, rv)
+    
+  }
+  ##
+  names(status) <- dnm
+  ##
+  status
+}
+##
+##
+##
+ucd.getzip <- function(
+    ucd.version ##
+  , destdir
+  , db = "UCD"
+  , ucd.url = "https://www.unicode.org/Public"
+  , zipfnm = c( "UCD.zip", "Unihan.zip", "uts39-data-<version/>.zip")
+  ##
+  , exec = F
+  , force = F
+  ##
+  , verbose = 0
+){
+  ##
+  if( missing(ucd.version)) stop("missing ucd.version")
+  ##
+  if( missing(destdir)) stop("missing destdir")
+  ##
+  if(!dir.exists(destdir)){
+    stop("destdir ", destdir, "does not exist")
+  }
+  ##
+  db = match.arg(db, dbnm <- c("UCD", "Unihan", "security"))
+  ##
+  zipfnm <- zipfnm[match(db, dbnm)]
+  ##
+  if( isSec <- db==dbnm[3] ) zipfnm <- sub("<version/>", ucd.version, zipfnm)
+  ##
+  url <- if( !isSec ) paste(ucd.url, "zipped", ucd.version, zipfnm, sep="/") else paste(ucd.url, dbnm[3], ucd.version, zipfnm, sep="/")
+  ## 
+  destfile <- paste(destdir, zipfnm, sep="/")
+  ##
+  if( verbose>0 ) cat(
+      ##
+      "url:"
+      ##
+      , url
+      ##
+      , "destination:"
+      ## 
+      , destfile 
+      , "\n"
+    )
+  ##
+  if( file.exists(destfile) && !force){
+    ##
+    msg <- paste("file", zipfnm, "has already been downloaded. Use force=T to download it again.\n")
+    ##
+    if( verbose>0 ) cat(msg) else warning(msg)
+    ##
+    return()
+  }
+  ##
+  if( exec ){
+    ##
+    download.file(
+      url 
+      ##
+      , destfile 
+    )
+  }else -1
+}
+
+##
+ucd.unzip <- function(
+  basedir
+  , ucd.version ## 
+  , db = "UCD"
+  , exec=F
+  , zipfnm = c( "UCD.zip", "Unihan.zip", "uts39-data-<version/>.zip" )
+  ## 
+  , overwrite=F
+  ##
+  , verbose = 0
+  ,...
+){
+  ##
+  db = match.arg(db, dbnm <- c("UCD", "Unihan", "security"))
+  ##
+  zipfnm <- zipfnm[match(db, dbnm)]
+  ##
+  if( isSec <- db==dbnm[3] ) zipfnm <- sub("<version/>", ucd.version, zipfnm)
+  ##
+  zipfile <- paste(basedir, zipfnm, sep="/")
+  ##
+  cat(db, "\n")
+  ##
+  if( isSec & missing(ucd.version)) stop("missing ucd.version")
+  ##
+  if( file.exists(zipfile) ){
+    ##
+    exdir <- paste(basedir, tolower(db), sep="/")
+    ##
+    cat("zip:", zipfile, "exdir:", exdir, "\n")
+    ##
+    if( !exec ) return(NA_character_)
+    ##
+    if(!dir.exists(exdir)){
+      ##
+      stop("exdir ", exdir, "does not exist")
+    }
+    ##
+    unzip(
+      zipfile
+      , exdir = exdir
+      , overwrite=overwrite
+      ,...
+    )
+  }else{
+    stop("zipfile ", zipfile, "not found")
+  }
+}
+##
+## 
+##
+extractFileUrl <- extractUrlFromHtmlFile <- function(html, fext =".txt"){
+  ## 
+  fnm <- XML::getNodeSet(
+    html
+    # , paste0("//a[contains(@href,'", fext, "') ]/@href")
+    ##
+    , paste0(
+      "//a["
+      , paste( sprintf("contains(@href,'%s')", fext), collapse=" or " )
+      , "]/@href"
+    )
+  )
+  ##
+  if( length(fnm) ) {
+    if( all(sapply(fnm,length)==1 ) ) unlist(fnm)
+    else{
+      print(fnm)
+      stop("xpath result is not a vector")
+    }
+  }else{
+    stop("empty node set")
+  }
+}
+##
+getFilesFromHtmlPage <- function(
+  url
+  , destdir
+  , ext = ".txt"
+  ## 
+  , exec = F
+  , force = F
+  ##
+  , verbose = 0
+){
+  ##
+  r <- RCurl::getURL(url, verbose=verbose>2)
+  ## parse html
+  html <- XML::htmlParse(r)
+  ##
+  fnm <- extractUrlFromHtmlFile(html, ext)
+  ##
+  rv <- lapply(
+    fnm 
+    , function(nm, url, destdir, exec){
+      ##
+      cat( furl <- paste(url, nm, sep="/"), destfile <- paste(destdir, nm, sep="/"))
+      if( 
+        exec & !( 
+          x <- file.exists(destfile) & !force 
+        ) 
+      ){
+        cat( "\n")
+        download.file(
+          furl, destfile
+        )
+      }else{
+        if( x ){cat(destfile, "already exists\n")}
+        -1
+      }
+    } 
+    ##
+    , url = url
+    , destdir = destdir
+    , exec = exec
+  )
+  ##
+  names(rv) <- fnm
+  ##
+  rv
+}
+##
+##
+##
+getIVD <- function(
+  basedir
+  # , latest = T
+  , dt.idx = length(dt)
+  , url = "https://unicode.org/ivd/data"
+  , ext = formals(getFilesFromHtmlPage)$ext
+  ##
+  , exec = F
+  , force = F
+  ##
+  , verbose = 0
+){
+  ##
+  if( 
+    !dir.exists(destdir <- paste(basedir, "ivd", sep="/")) 
+  )stop("output dir ", destdir, " does not exist")
+  ##
+  # latest.url <- if( latest ){
+  p <- RCurl::getURL(
+    ## ¡¡¡ trailing '/' !!!
+    if(!grepl("\\/$", url) ) paste0(url, "/") else url
+    ##
+    , verbose=verbose>2
+  )
+  ## parse html
+  html <- XML::htmlParse(p)
+  ## 
+  href <- XML::xpathSApply(
+    html
+    ##
+    , paste0(
+      "//td/a" ## /@href"
+    )
+    , XML::xmlGetAttr ## XML::xmlAttrs ## xmlGetAttr		
+    , "href"
+  )
+  ##
+  dt <- sort( as.Date(href, format="%Y-%m-%d/") )
+  ##
+  if( !exec | verbose>0 ){
+    cat("IVD repertories:", as.character( dt ), sep="\n")
+  }
+  ##
+  if( !exec ) return( dt ) 
+  ##
+  dt <- dt[dt.idx]
+  ##
+  destdir = paste(basedir, "ivd", as.character(dt), sep="/")
+  ##
+  dir.create(destdir)
+  ##
+  ivd.url <- paste0(url, "/", dt, "/")
+  ##
+  cat("downloading ", ivd.url, "/*{", paste(ext, sep=","), "}\n\n", sep="")
+  # }else{
+  #   destdir <- basedir
+  #   url
+  # }
+  ##
+  getFilesFromHtmlPage(
+    ivd.url
+    , destdir = destdir
+    , ext=ext, exec=exec, force=force, verbose=verbose
+  )
+}
+##
+##
+##
+getUCD <-function(
+  destdir
+  , ucd.version
+  , ucd.url = "https://www.unicode.org/Public"
+  , ivd.url = formals(getIVD)$url
+  , force = F
+  , verbose = 1
+){
+  ##
+  if( verbose>0 ) cat("\nmkdir ", destdir, "…\n", sep ="")
+  ## 
+  ucd.mkdir(
+    destdir <- destdir ## 
+    , exec = T
+  )
+  ##
+  if( verbose>0 ) cat("\nget UCD zip…\n")
+  ##
+  ucd.getzip(
+    ucd.version = ucd.version
+    , destdir = destdir
+    , db = "UCD" 
+    , exec = T
+    , force = force
+    , verbose = verbose
+  )
+  ##
+  if( verbose>0 ) cat("\nunzip UCD zip…\n")
+  ##
+  ucd.unzip(
+    destdir
+    ,  ucd.version
+    , db = "UCD" 
+    , exec = T
+    # , verbose = verbose
+  )
+  ##
+  if( verbose>0 ) cat("\nget Unihan zip…\n")
+  ##
+  ucd.getzip(
+    ucd.version = ucd.version
+    , destdir = destdir
+    , db = "Unihan" 
+    , exec = T
+    , force = force
+    , verbose = verbose
+  )
+  ##
+  if( verbose>0 ) cat("\nunzip Unihan zip…\n")
+  ##
+  ucd.unzip(
+    destdir
+    ,  ucd.version
+    , db ="Unihan" 
+    , exec = T
+    # , verbose = verbose
+  )
+  ##
+  if( verbose>0 ) cat("\nget security zip…\n")
+  ##
+  ucd.getzip(
+    ucd.version = ucd.version
+    , destdir = destdir
+    , db = "security" 
+    , exec = T
+    , force = force
+    , verbose = verbose
+  )
+  ##
+  if( verbose>0 ) cat("\nunzip security zip…\n")
+  ##
+  ucd.unzip(
+    destdir
+    ,  ucd.version
+    , db = "security" 
+    , exec = T
+    # , verbose = verbose
+  )
+  ##
+  ##
+  ##
+  if( verbose>0 ) cat("\nget UCA files…\n\n")
+  ##
+  getFilesFromHtmlPage(
+    url = paste(ucd.url, "UCA", ucd.version, "/" , sep="/" )
+    , destdir = paste(destdir, "uca",  sep="/" ) 
+    , exec = T
+    , force = force
+  )
+  ##
+  ##
+  if( verbose>0 ) cat("\nget IVD files…\n\n")
+  ##
+  rv <- getIVD(
+    destdir
+    , url = ivd.url
+    , ext = c(".txt") ## , ".pdf"
+    , exec = T
+    # , force = force
+    , verbose = verbose
+  )
+  ##
+  invisible()
+}
+##__________________________________________________________________________________________________
+
+##__________________________________________________________________________________________________
+##
+##
+## ¡¡¡ FIXME: leading blanks : cf. ucd.prop$propname !!!
+##__________________________________________________________________________________________________
 ##
 ucdCommParse <- function(x, j = c(2,4)){
   ##
   m <- stringi::stri_match(x,regex="([^#]*)(#\\s*(.+))?")[,j]
-  ##
+  ## blanks
   m <- apply(m, 2, function(x) gsub("(^\\s+)|(\\s+$)", "", x) )
 }
 ##
@@ -19,8 +445,6 @@ ucdCsvParse <- function(x, cnm, sep=";", comm.parse = T, penult.drop = F){
   if( comm.parse ){
     ##
     rv <- as.data.frame(ucdCommParse(txt), stringsAsFactors = F) 
-    ## 
-    comm <- rv[,2]
     ##
     txt <- rv[,1]
   }
@@ -40,33 +464,8 @@ ucdCsvParse <- function(x, cnm, sep=";", comm.parse = T, penult.drop = F){
     rv, cnm 
   ) else rv
 }
+
 ##
-# ucdCsvParse <- function(x, cnm, sep=";", comm.parse = T, penult.drop = F){
-#   ##
-#   txt <- ucd.getVal(x)
-#   ##
-#   rv <- read.table(textConnection(txt), sep=sep, stringsAsFactors = F,comment.char ="")
-#   ##
-#   ##
-#   rv <- structure(
-#     ##
-#     if( comm.parse ){
-#       ##
-#       m <- as.data.frame(ucdCommParse(rv[, ncol(rv)]), stringsAsFactors = F) ##
-#       ##
-#       if(penult.drop) m <- m[, -ncol(m)+1, drop=F]
-#       ##
-#       cbind(rv[,-ncol(rv), drop=F], m) ##
-#     } else rv ##
-#     ##
-#     , htxt = htxt(txt)
-#   )
-#   ## ASSERT comm.parse==T
-#   # if(penult.drop) rv <- rv[, -ncol(rv)+1]
-#   ##
-#   ##
-#   if(!missing(cnm)) setColnames(rv, cnm) else rv
-# }
 ##
 ##
 ##
@@ -74,6 +473,13 @@ ucdTblParse <- function(x, cnm = NULL, ncp = 1L, cp.drop=F, hex.drop = T, sep=";
   ## 
   if(missing(cnm)) stop("missing cnm")
   ##
+  lab <- NULL
+  ##
+  if( length( nm <- names(cnm) ) ){
+    lab <- cnm
+    cnm <- nm
+  }
+  ## ¿¿ utile ?? ncp=1L donne le même résultat en fait…
   if( ncp==0L ){
     ##
     txt <- ucd.getVal(x)
@@ -82,14 +488,19 @@ ucdTblParse <- function(x, cnm = NULL, ncp = 1L, cp.drop=F, hex.drop = T, sep=";
     ##
     cp <- strToCp(rv[,1], drop=cp.drop)
     ##
-    return(
-      structure(
+    rv <- structure(
         setColnames(
           data.frame(cp, rv[,2], stringsAsFactors = F)
           , cnm
         )
         , htxt=htxt(txt)
       )
+    ##
+    return(
+      if( length( lab ) ){
+        attr(rv, "variable.labels") <- lab
+        rv
+      }else rv
     )
   }
   ## 
@@ -123,7 +534,7 @@ ucdTblParse <- function(x, cnm = NULL, ncp = 1L, cp.drop=F, hex.drop = T, sep=";
   }else stop("ncp>3: ", ncp)
   ##
   ##
-  if( comm.parse ){
+  rv <- if( comm.parse ){
     ##
     i <- ( !penult.drop ):0
     ## ¡¡¡ ctrl !!!
@@ -169,6 +580,10 @@ ucdTblParse <- function(x, cnm = NULL, ncp = 1L, cp.drop=F, hex.drop = T, sep=";
     ) 
   }
   ##
+  if( length( lab ) ){
+    attr(rv, "variable.labels") <- lab
+    rv
+  }else rv
 }
 
 ##
@@ -187,10 +602,13 @@ read.ucdTbl <- function(rpath, ucd.path,...){
 ##
 ##
 ##
+##
+##
+##
 read.udata <- function(rpath="ucd/UnicodeData.txt", ucd.path){
   ##
   udata.lab <- c(
-    "cp" = "Code point"                       
+    "cp" = cp_label ## "Code point"                       
     , "Name" = "Code point Name (na)"                    
     , "General_Category" = "Code point General_Category (gc)"         
     , "Canonical_Combining_Class" = "Code point Combining_Class (ccc)"
@@ -240,13 +658,15 @@ read.udata <- function(rpath="ucd/UnicodeData.txt", ucd.path){
   )
   ##
   decompTy0 <- decompTyParse(rv, j =  j <- 6)
-  ##
+  ## insert Decomposition Type and Mapping
   udata0 <- within(
     setColnames(
       data.frame(
         rv[,1:(j-1)]
+        ##
         , decomp = decompTy0[,1]
         , decompTy = decompTy0[,2]
+        ##
         , rv[,(j+1):ncol(rv)]
         , stringsAsFactors = F
       )
@@ -254,39 +674,65 @@ read.udata <- function(rpath="ucd/UnicodeData.txt", ucd.path){
     )
     , {
       Decomposition_Mapping <- strToCpSeq(Decomposition_Mapping)
+      ##
+      Simple_Uppercase_Mapping <- as.vector(strToCp(
+        Simple_Uppercase_Mapping
+        , drop = T
+      ))
+      ##
+      Simple_Lowercase_Mapping <- as.vector(strToCp(
+        Simple_Lowercase_Mapping
+        , drop = T
+      ))
+      ##
+      Simple_Titlecase_Mapping <-as.vector(strToCp(
+        Simple_Titlecase_Mapping
+        , drop = T
+      ))
     }
   )
   ##
   clabels(udata0) <- udata.lab
   ##
+  structure(
+    udata0
+    , rpath = rpath
+  )
+}
+##
+##
+##
+udataTowide <- function(udata){
+  ##
   ## Ranges
   ##
   i <- matrix(
-    grep('((First)|(last))>', udata0$Name, ignore.case = T, perl=T)
+    grep('((First)|(last))>', udata$Name, ignore.case = T, perl=T)
     , ncol=2,byrow=T
   )
   ##
-  udata1 <- subset(
+  rv <- subset(
     within(
       cbind(
-        cp_lo = cp <- udata0$cp##
+        cp_lo = cp <- udata$cp##
         , cp_hi = cp
-        , udata0[, 2:ncol(udata0)]
+        , udata[, 2:ncol(udata)]
       )
       ,{
         cp_hi[i[,1]] <- cp_hi[i[,2]]
         Name[i[,1]] <-  apply(
-          matrix(udata0$Name[i],ncol=2,byrow=F)
+          matrix(udata$Name[i],ncol=2,byrow=F)
           , 1
           , paste, collapse=".."
         )
       })
-    , !( 1:nrow(udata0) %in% i[,2])
+    , !( 1:nrow(udata) %in% i[,2])
   )
   ##
   structure(
-    udata1
-    , rpath = rpath
+    rv
+    , variable.labels = c( cp_lo_label, cp_hi_label, ( v <- attr(udata, "variable.labels") )[-1] )
+    , rpath = attr(udata, "rpath")
   )
 }
 ##
@@ -331,6 +777,7 @@ read.propAl <- function(
     "propcat" = "Property category"
     , "propabbr" = "Property abbreviation"
     , "propname" = "Property name"
+    , comments = comments_label
   )
   ##
   structure(
@@ -392,6 +839,7 @@ read.propValal <- function(rpath="ucd/PropertyValueAliases.txt", ucd.path){
     , "prop"  = "Property"
     , "val"  = "Property values"
     , "valname" ="Property value name"
+    , comments = comments_label
   )
   ##
   rv
@@ -417,6 +865,7 @@ read.namedSeq <- function(rpath="ucd/NamedSequences.txt", ucd.path){
       }
     )
     , htxt=htxt(txt)
+    , variable.labels = c("Name", cp_seq_label)
     , rpath = rpath
   )
   ##
@@ -426,23 +875,59 @@ read.namedSeq <- function(rpath="ucd/NamedSequences.txt", ucd.path){
 ##
 ##
 ## 
+# <code>; <status>; <mapping>; # <name>
 # 0041; C; 0061; # LATIN CAPITAL LETTER A
 ## 
 read.casefold <- function(rpath="ucd/CaseFolding.txt", ucd.path){
   ##
-  rv <- ucdCsvParse(
-    readLines(paste(ucd.path, rpath, sep = "/") )
-    ## 
-    , cnm=c(
-      "cp", "status"
-      , "Case_Folding" ## "mapping" ## 
-      , "Name"
+  within(
+    read.ucdTbl(
+      rpath
+      , ucd.path
+      , cnm = c("cp", "status", "Case_Folding", "Name") ##
+      , nc = 1L
+      , cp.drop=T
+      , comm.parse=F
     )
-    , penult.drop = T
-  )
-  ##
-  structure(rv, rpath= rpath)
+    , {
+      Case_Folding <- as.vector( strToCp(Case_Folding, drop=T))
+  })
+  # ##
+  # rv <- ucdCsvParse(
+  #   readLines(paste(ucd.path, rpath, sep = "/") )
+  #   ## 
+  #   , cnm=c(
+  #     "cp", "status"
+  #     , "Case_Folding" ## "mapping" ## 
+  #     , "Name"
+  #   )
+  #   , penult.drop = T
+  # )
+  # ##
+  # structure(
+  #   rv
+  #   , variable.labels = c(
+  #     cp_label
+  #     , "status"
+  #     , "Case_Folding" ## "mapping" ## 
+  #     , "Name"
+  #   )
+  #   , rpath= rpath
+  # )
 }
+##
+##
+# The <condition_list> is optional. Where present, it consists of one or more language IDs               
+# or casing contexts, separated by spaces. In these conditions:                                    
+# - A condition list overrides the normal behavior if all of the listed conditions are true.             
+# - The casing context is always the context of the characters in the original string,                   
+# NOT in the resulting string.                                                                           
+# - Case distinctions in the condition list are not significant.- Conditions preceded by \"Not_\" represent the negation of the condition.
+# The condition list is not represented in the UCD as a formal property.
+##
+# Parsers of this file must be prepared to deal with future additions to this format:"                     
+# * Additional contexts                                                                                 
+# * Additional fields   
 ##
 # <code>; <lower>; <title>; <upper>; (<condition_list>;)? # <comment>
 # 00DF; 00DF; 0053 0073; 0053 0053; # LATIN SMALL LETTER SHARP S
@@ -482,11 +967,17 @@ read.specialCasing <- function(rpath="ucd/SpecialCasing.txt", ucd.path){
     , "Lowercase_Mapping" ## "cp_lowcase" ## 
     , "Titlecase_Mapping" ## "cp_titlecase" ## 
     , "Uppercase_Mapping" ## "cp_uppercase" ## 
-    , "cond", "comments"
+    , "condition_list", "comments"
   )
   ##
   structure(
     sc1
+    , variable.labels = c(
+      cp_label
+      , "Lowercase Mapping", "Titlecase Mapping", "Uppercase Mapping"
+      , "One or more language IDs or casing contexts"
+      , comments_label
+    )
     , rpath = rpath
   )
 }
@@ -536,12 +1027,19 @@ read.dervNormProp <- function(rpath="ucd/DerivedNormalizationProps.txt", ucd.pat
   rv <- rv[,c( "lo", "hi", "V2", "Quick_Check", "nfSeq", "V4")]
   ##
   rv <- setColnames(
-    rv, c("cp_lo", "cp_hi", "nf", "Quick_Check", "nfSeq", "comments")
+    rv, c("cp_lo", "cp_hi", "normprop", "Quick_Check", "nfSeq", "comments")
   )
   ##
   structure(
     rv
     , htxt=htxt(txt)
+    , variable.labels = c(
+      cp_lo_label, cp_hi_label
+      , "Normalization property"
+      , "Quick Check"
+      , "Normalization sequence"
+      , comments_label
+    )
     , rpath = rpath
   )
 }
@@ -556,23 +1054,31 @@ read.arabicShapings <- function(rpath="ucd/ArabicShaping.txt", ucd.path){
   ##
   txt <- ucd.getVal(readLines( paste(ucd.path, rpath, sep = "/") ))
   ##
-  rv <- read.table(
+  rv <- within(
+    read.table(
     textConnection(txt)
     , col.names = c( "cp", "Name", "Joining_Type", "Joining_Group")
     , sep=";", stringsAsFactors = F,comment.char =""
   )
+  , {
+    cp = as.vector(strToCp(cp, drop=T))
+  })
   ##
   structure(
     rv
     , htxt=htxt(txt)
+    , variable.labels = c(cp_label, "Name", "Joining Type", "Joining Group")
     , rpath = rpath
   )
   ##
 }
 
 ##
+# The first field is the CJK radical number. 
+# The second field is the CJK radical character
+# The third field is the CJK unified ideograph.
 ##
-#  ¡¡¡ WUT : cf. "'" CJKid se répètent 
+#  ¡¡¡ WUT : cf. "'" CJKid se répètent !!!
 ##
 ##
 read.CJKRadicals <- function(rpath="ucd/CJKRadicals.txt", ucd.path){
@@ -582,17 +1088,18 @@ read.CJKRadicals <- function(rpath="ucd/CJKRadicals.txt", ucd.path){
   rv <- within(
     read.table(
       textConnection(sub("'", "", txt))
-      , col.names = c( "CJKid", "Radicals", "Unified_Ideograph")
+      , col.names = c( "CJKradicalNum", "cp_CJKradical", "cp_unified_ideograph")
       , sep=";", stringsAsFactors = F,comment.char =""
     )
     , {
-      Radicals = strToCp(Radicals, drop=T)
-      Unified_Ideograph = strToCp(Unified_Ideograph, drop=T)
+      cp_CJKradical = strToCp(cp_CJKradical, drop=T)[,1, drop=T]
+      cp_unified_ideograph = strToCp(cp_unified_ideograph, drop=T)[,1, drop=T]
     })
   ##
   structure(
     rv
     , htxt=htxt(txt)
+    , variable.labels = c( "CJK radical number", "CJK radical character", "CJK unified ideograph")
     , rpath = rpath
   )
   ##
@@ -616,15 +1123,51 @@ read.brkTest <-  function(
       , cnm
     )
     , htxt = htxt(txt)
+    , variable.labels = c("string", comments_label)
     , rpath = rpath
   )
 }
 
 ##
+## UCA 
+##
+read.allkeys <- function(rpath="uca/allkeys.txt" , uca.path,...){
+  ##
+  txt <- ucd.getVal(
+    readLines( paste(ucd.path, rpath, sep = "/"))
+  )
+  ##
+  m <- grepl("^@", txt)
+  ##
+  rv <- read.table(textConnection(txt[!m]), sep=sep, stringsAsFactors = F, comment.char ="")
+  ##
+  comm <- ucdCommParse(rv[,2])
+  ##
+  allkeys <- data.frame(
+    cp = I(strToCpSeq(rv[,1]))
+    , collationElement = comm[,1]
+    , comments =  comm[,2]
+    , stringsAsFactors = F
+  )
+  ##
+  structure(
+    allkeys
+    , htxt=htxt(txt)
+    , meta = txt[m]
+    , variable.labels = c(
+      "Code point sequence"
+      , "collation element"
+      , comments_label
+    )
+    , rpath = rpath
+  )
+}
+##
 ##
 ##
 read.decomps <- function(rpath="uca/decomps.txt" , uca.path,...){
-  within(
+  structure(
+    within(
     ucdTblParse( ##
       readLines(paste(uca.path, rpath, sep="/"))
       , cnm = c("cp", "decomposition_tag", "decomposition", "comments")
@@ -632,16 +1175,33 @@ read.decomps <- function(rpath="uca/decomps.txt" , uca.path,...){
     ,{
       decomposition <- strToCpSeq(decomposition)
     })
+    , rpath = rpath
+  )
 }
 
 ##
+## IVD
 ##
 ##
-read.ivdSeq <- function(rpath="ivd/IVD_Sequences.txt" , ivd.path,...){
+##
+read.ivdSeq <- function(rpath="ivd/IVD_Sequences.txt" , ivd.path, fnm="IVD_Sequences.txt",...){
+  ##
+  fpath <- if( !missing( rpath) ) paste(ivd.path, rpath, sep="/") else{
+    fpath <- paste(ivd.path, "ivd", sep="/")
+    dnm <- list.dirs(fpath)
+    dnm <- stringi::stri_match(dnm, regex= pat <- "(\\d{4}-\\d{2}-\\d{2})")
+    if( all(is.na(dnm[,1])) ) stop("no directory matching ", pat, " directory in ", fpath)
+    # dnm <- sort(as.Date(dnm[,2]), decreasing = T)[1]
+    ##, dnm
+    # rpath <- paste( "ivd", fnm, sep = "/")
+    ##
+    paste( fpath, sort(as.Date(dnm[,2]), decreasing = T)[1] , fnm, sep = "/")
+  }
+  ##
   structure(
     within(
       ucdCsvParse(
-        readLines(paste(ivd.path, rpath, sep="/"))
+        readLines(fpath)
         , cnm = c("cp", "collection", "ivd_oid")
         , comm.parse = F
         , 
@@ -650,6 +1210,78 @@ read.ivdSeq <- function(rpath="ivd/IVD_Sequences.txt" , ivd.path,...){
         cp <- strToCp(cp, drop=T)
       }
     )
-    , rpath = rpath 
+    , rpath = formals(read.ivdSeq)$rpath ##rpath 
   )
+}
+
+##
+##
+## 3 semi-colon separated columns; last columns uses \t as separator
+##
+read.confusable <- function(rpath="security/confusables.txt", ucd.path){
+  ##
+  structure(
+    within(
+      ucdTblParse( # ucdCsvParse(
+        readLines( paste(ucd.path, rpath, sep = "/"))
+        , cnm = , c("cp", "target", "obsolete", "comments")
+        , cp.drop = T
+      )
+      , {
+        ##
+        target = strToCpSeq(
+          sub( "^\\t", "", target)
+        )
+        ## #1 field of last column
+        obsolete= sub( "^\\t", "", obsolete)
+      }
+    )
+    , rpath = rpath
+  )
+}
+##
+##
+##
+read.confusableSummary <- function(rpath="security/confusablesSummary.txt", ucd.path){
+  ##
+  txt <- ucd.getVal(
+    readLines( paste(ucd.path, rpath, sep = "/"))
+  )
+  ##
+  m <- stringi::stri_match(
+    txt
+    ## ou \\t(.+?)\\t
+    , regex="\\)\\s+(([A-F\\d]{4,5}\\s)+)"
+  )
+  ##
+  cp <- m[,2]
+  ##
+  h <- htxt(txt)
+  ##
+  hidx <- attr(h, "hidx")
+  ##
+  hidx <- hidx[-length(hidx)]
+  ##
+  confus <- rep(
+    cp[hidx]
+    , nrep <- diff(attr(h, "hidx")) - 1
+  )
+  ##
+  rv <- data.frame(
+    cp = I(
+      lapply(strsplit(cp[-hidx], "\\s"), charToCp)
+    )
+    , confusable =  I(
+      lapply(strsplit(confus, "\\s"), charToCp)
+    )
+    , comments = paste(
+      rep(txt[hidx], nrep)
+      , txt[-hidx]
+    )
+    , stringsAsFactors = F
+  )
+  ##
+  htxt(rv) <- h
+  ##
+  structure( rv, rpath = rpath )
 }

@@ -1,6 +1,18 @@
 ##
 ##
 ##
+cp_label = "Code point"
+##
+cp_lo_label = "Code point start"
+##
+cp_hi_label = "Code point end"
+##
+cp_seq_label = "Code point sequence"
+##
+comments_label = "Comments"
+##
+##
+##
 setColnames <- function(x, cnm = paste(prefix,1:ncol(x),sep=''), prefix='X' ){
   nm <- names(cnm)
   if(length(nm)==0L){
@@ -58,7 +70,7 @@ htxt <- function(x){
     all( names( attributes(value))  %in% nm[-1] )
   ){
     ##
-    cat("htxt\n");print(str(value))
+    # cat("htxt\n");print(str(value))
     ##
     structure(
       x

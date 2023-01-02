@@ -1,25 +1,8 @@
 ##
-## Directory structure
+## Unicode Data files conversion to R data.frame
 ##
-# <ucd.path/>/ucd/
-#   ArabicShaping.txt      
-#   Blocks.txt                 
-#   DerivedNormalizationProps.txt   
-#   HangulSyllableType.txt
-#   …
-# 
-# <uca.path/>/uca/
-#   allkeys.txt  
-#   decomps.txt
-# 
-# <ivd.path/>/ivd/
-#   IVD_Collections.txt  
-#   IVD_Sequences.txt
-#   …
-##
-##
-## if the root paths are all the sames :
-# ivd.path <- uca.path <- ucd.path <- <path/>
+## Please refet to https://numa.hypotheses.org/3963 for more information on using this script
+## 
 
 ##
 ## ucd/UnicodeData.txt
@@ -28,6 +11,12 @@
 ucd.udata <- read.udata(
   ucd.path = ucd.path ## 
 )
+##
+## Alternatively, convert to "wide" format where blocks are expressed as ranges (cp_lo–cp_hi)
+##
+# ucd.udata <- udataTowide(read.udata(
+#   ucd.path = ucd.path ## 
+# ))
 
 ##
 ## 
@@ -36,7 +25,8 @@ ucd.udata <- read.udata(
 ucd.nameAl <- read.ucdTbl(
   "ucd/NameAliases.txt"
   , ucd.path ## 
-  , cnm = c("cp", "Name_Alias", "Name_Alias_Type")
+  ##, cnm = c("cp", "Name_Alias", "Name_Alias_Type")
+  , cnm = c( "cp" = cp_label, "Name_Alias" = "Name Alias", "Name_Alias_Type"= "Name Alias Type")
   , comm.parse=F
   , cp.drop=T
 )
@@ -58,20 +48,26 @@ ucd.propValal <- read.propValal(
 ## 
 # Contributory properties are typically defined in PropList.txt and the corresponding derived property is then listed in DerivedCoreProperties.txt.
 ##
-ucd.prop <- read.ucdTbl(
+ucd.prop <- within(
+  read.ucdTbl(
   "ucd/PropList.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "propname", "comments")
+  ##, cnm = c("cp_lo", "cp_hi", "propname", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "propname" = "Property name", "comments" = comments_label)
   , ncp = 1L
   , cp.drop=F
 )
+, {
+  propname = sub("^\\s+", "", propname, perl= T)
+})
 ##
 ## 
 ##
 ucd.dervProp <- read.ucdTbl(
   "ucd/DerivedCoreProperties.txt"
-  , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "dpropname", "comments")
+  , ucd.path 
+  ## , cnm = c("cp_lo", "cp_hi", "dpropname", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "dpropname" = "Derived property name", "comments" = comments_label)
   , ncp = 1L
   , cp.drop=F
 )
@@ -82,7 +78,7 @@ ucd.dervProp <- read.ucdTbl(
 ucd.age <- read.ucdTbl(
   "ucd/DerivedAge.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Age", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Age" = "Age", "comments" = comments_label)
   , ncp = 1L
   , cp.drop=F
 )
@@ -95,7 +91,7 @@ ucd.blk <- within(
     "ucd/Blocks.txt"
     , ucd.path ## 
     ##
-    , cnm = c("cp_lo", "cp_hi", "Block")
+    , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Block" = "Block name")
     , ncp = 1L
     , cp.drop=F
     , comm.parse = F
@@ -134,7 +130,7 @@ ucd.dervNormProp <- read.dervNormProp(
 ucd.NormalizationCorrections  <- read.ucdTbl(
   "ucd/NormalizationCorrections.txt"
   , ucd.path ## 
-  , cnm = c("cp", "cp_err", "cp_decomp", "version" , "comments")
+  , cnm = c("cp" = cp_label, "cp_err" ="Original (erroneous) decomposition", "cp_decomp" = "Corrected decomposition", "version" = "Unicoce version", "comments" = comments_label)
   , ncp = 3L
   , cp.drop=T
 )
@@ -144,8 +140,8 @@ ucd.NormalizationCorrections  <- read.ucdTbl(
 ucd.compex <- read.ucdTbl(
   "ucd/CompositionExclusions.txt"
   , ucd.path ## 
-  , cnm = c("cp", "comments")
-  , nc = 0L
+  , cnm = c("cp" = cp_label, "comments" = comments_label)
+  , ncp = 0L
   , cp.drop=T
 )
 
@@ -155,7 +151,7 @@ ucd.compex <- read.ucdTbl(
 ucd.BidiBrackets <- read.ucdTbl(
   "ucd/BidiBrackets.txt"
   , ucd.path ## 
-  , cnm = c("cp", "Bidi_Paired_Bracket", "Bidi_Paired_Bracket_Type", "comments")
+  , cnm = c("cp" = cp_label, "Bidi_Paired_Bracket"= "Bidi Paired Bracket", "Bidi_Paired_Bracket_Type" = "Bidi Paired Bracket Type", "comments" = comments_label)
   , ncp = 2L
   , cp.drop=T
 )
@@ -170,7 +166,7 @@ ucd.BidiMirroring <- within(
   read.ucdTbl(
     "ucd/BidiMirroring.txt"
     , ucd.path ## 
-    , cnm = c("cp", "Bidi_Mirroring_Glyph", "comments")
+    , cnm = c("cp" = cp_label, "Bidi_Mirroring_Glyph" = "Bidi Mirroring Glyph", "comments" = comments_label)
     , ncp = 1L
     , cp.drop=T
   )
@@ -185,13 +181,13 @@ ucd.BidiMirroring <- within(
 ucd.vertOrient <- read.ucdTbl(
   "ucd/VerticalOrientation.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Vertical_Orientation", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Vertical_Orientation" = "Vertical Orientation", "comments" = comments_label)
   , nc = 1L
   , cp.drop=F
 )
 
 ##
-## ucd/NamedSequences.txf
+## ucd/NamedSequences.txt
 ##
 ##
 ucd.namedSeq <- read.namedSeq( 
@@ -210,7 +206,7 @@ ucd.scripts <- read.ucdTbl(
   "ucd/Scripts.txt"
   , ucd.path ## 
   ##
-  , cnm = c("cp_lo", "cp_hi", "Script", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Script" = "Script Name", "comments" = comments_label)
   , ncp = 1L
   , cp.drop=F
 )
@@ -222,7 +218,7 @@ ucd.scriptsExt <- read.ucdTbl(
   "ucd/ScriptExtensions.txt"
   , ucd.path ## 
   ##
-  , cnm = c("cp_lo", "cp_hi", "Script_Extensions", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Script_Extensions" = "Script Extensions Name", "comments" = comments_label)
   , ncp = 1L
   , cp.drop=F
 )
@@ -248,7 +244,7 @@ ucd.CJKRadicals <- read.CJKRadicals(
 ucd.EastAsianWidth <- read.ucdTbl(
   "ucd/EastAsianWidth.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "East_Asian_Width",  "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "East_Asian_Width" = "East Asian Width",  "comments" = comments_label)
   , ncp = 1L
   , cp.drop=F
 )
@@ -269,7 +265,7 @@ ucd.EquivalentUnifiedIdeograph <- within(
   read.ucdTbl(
     "ucd/EquivalentUnifiedIdeograph.txt"
     , ucd.path ## 
-    , cnm = c("cp_lo", "cp_hi", "Equivalent_Unified_Ideograph",  "comments")
+    , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Equivalent_Unified_Ideograph"= "Equivalent Unified Ideograph",  "comments" = comments_label)
     , ncp = 1L
     , cp.drop=F
   )
@@ -292,7 +288,7 @@ ucd.EquivalentUnifiedIdeograph <- within(
 ucd.jamo<- read.ucdTbl(
   "ucd/Jamo.txt"
   , ucd.path ## 
-  , cnm = c("cp", "Jamo_Short_Name",  "comments")
+  , cnm = c("cp" = cp_label, "Jamo_Short_Name" = "Jamo Short Name",  "comments" = comments_label)
   , ncp = 1L
   , cp.drop=T
 )
@@ -302,7 +298,7 @@ ucd.jamo<- read.ucdTbl(
 ucd.HangulSyllableType <- read.ucdTbl(
   "ucd/HangulSyllableType.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Hangul_Syllable_Type",  "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Hangul_Syllable_Type" = "Hangul Syllable Type",  "comments" = comments_label)
   , ncp = 1L
   , cp.drop=F
 )
@@ -313,7 +309,7 @@ ucd.HangulSyllableType <- read.ucdTbl(
 ucd.IndicPositionalCategory<- read.ucdTbl(
   "ucd/IndicPositionalCategory.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Indic_Positional_Category",  "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Indic_Positional_Category" = "Indic Positional Category",  "comments" = comments_label)
   , nc = 1L
   , cp.drop=F
 )
@@ -327,7 +323,7 @@ ucd.IndicPositionalCategory<- read.ucdTbl(
 ucd.IndicSyllabicCategory <- read.ucdTbl(
   "ucd/IndicSyllabicCategory.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Indic_Syllabic_Category",  "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Indic_Syllabic_Category" = "Indic_Syllabic_Category",  "comments" = comments_label)
   , ncp = 1L
   , cp.drop=F
 )
@@ -338,12 +334,12 @@ ucd.IndicSyllabicCategory <- read.ucdTbl(
 ucd.emoji <- read.ucdTbl(
   "ucd/emoji/emoji-data.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Emoji", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Emoji" = "Emoji", "comments" = comments_label)
   , nc = 1L
   , cp.drop=F
 )
 ## 
-## ucd/emoji-variation-sequences.txt, cf. infra
+## ucd/emoji-variation-sequences.txt, see below (Variants)
 ##
 
 ##
@@ -352,7 +348,7 @@ ucd.emoji <- read.ucdTbl(
 ucd.grBrk <- read.ucdTbl(
   "ucd/auxiliary/GraphemeBreakProperty.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Grapheme_Cluster_Break", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Grapheme_Cluster_Break" = "Grapheme Cluster Break", "comments" = comments_label)
   , nc = 1L
   , cp.drop=F
 )
@@ -362,7 +358,7 @@ ucd.grBrk <- read.ucdTbl(
 ucd.wordBrk <- read.ucdTbl(
   "ucd/auxiliary/WordBreakProperty.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Word_Break", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Word_Break" = "Word Break", "comments" = comments_label)
   , nc = 1L
   , cp.drop=F
 )
@@ -372,7 +368,7 @@ ucd.wordBrk <- read.ucdTbl(
 ucd.sentBrk <- read.ucdTbl(
   "ucd/auxiliary/SentenceBreakProperty.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Sentence_Break", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Sentence_Break" = "Sentence Break", "comments" = comments_label)
   , nc = 1L
   , cp.drop=F
 )
@@ -382,13 +378,13 @@ ucd.sentBrk <- read.ucdTbl(
 ucd.lnBrk <- read.ucdTbl(
   "ucd/LineBreak.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo", "cp_hi", "Line_Break", "comments")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "Line_Break" = "Line Break", "comments" = comments_label)
   , nc = 1L
   , cp.drop=F
 )
 
 ##
-## ucd/DerivedName.txt  
+# ucd/DerivedName.txt
 ##
 # This property is specified by the derivation documented in Section 4.8 of UnicodeData.txt,
 # the Jamo_Short_Name property in Jamo.txt, and a specified list of pattern strings used to derive names
@@ -397,7 +393,7 @@ ucd.lnBrk <- read.ucdTbl(
 ucd.dervName <- read.ucdTbl( ##
   "ucd/extracted/DerivedName.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo","cp_hi","name")
+  , cnm = c("cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label, "name" = "Derived name")
   , comm.parse =F
 )
 ##
@@ -426,7 +422,11 @@ ucd.dervName <- read.ucdTbl( ##
 ucd.dervNumVal <-  read.ucdTbl( ##
   "ucd/extracted/DerivedNumericValues.txt"
   , ucd.path ## 
-  , cnm = c("cp_lo","cp_hi","Numeric_Value", "empty" , "Symbolic_Value", "comments")
+  , cnm = c(
+    "cp_lo" = cp_lo_label, "cp_hi" = cp_hi_label
+    , "Numeric_Value" = "Numeric Value", "empty" = "Empty field" , "Symbolic_Value" = "Numeric value either as a whole integer or as a rational fraction"
+    , "comments" = comments_label
+  )
   , comm.parse = T
 )
 
@@ -435,7 +435,7 @@ ucd.dervNumVal <-  read.ucdTbl( ##
 ##
 ##
 ucd.StandardizedVariants <- structure(
-  within(
+ within(
     ucdCsvParse(readLines(
       paste(
         ucd.path ## 
@@ -447,6 +447,12 @@ ucd.StandardizedVariants <- structure(
     )
     ##
     , cp <- strToCpSeq(cp)
+  )
+  ## 
+  , variable.labels = c(
+    "cp" = cp_label
+    , "description"= "Description of the desired appearance", "position" = "Differences in particular shaping environments"
+    , "comments" = comments_label
   )
   , rpath=  "ucd/StandardizedVariants.txt"
 )
@@ -461,12 +467,14 @@ ucd.emojiVariation <- structure(
         , "ucd/emoji/emoji-variation-sequences.txt"
         , sep = "/") 
       )
-      , cnm=c("cp", "description", "comments")
+      , cnm=c("cp" , "description", "comments")
       , penult.drop = T
     )
     ##
     , cp <- strToCpSeq(cp)
   )
+  ## 
+  , variable.labels = c("cp" = cp_label, "description" = "description", "comments" = comments_label)
   , rpath=  "ucd/emoji/emoji-variation-sequences.txt"
 )
 
@@ -495,19 +503,64 @@ ucd.lnBrkTest <- read.brkTest(
 ##
 ## Unicode Collation Algorithm
 ##
+uca.allkeys <- read.allkeys(
+  uca.path=uca.path
+)
 ##
-# decompositions used in generating the Default Unicode Collation Element Table
-# (DUCET) for the Unicode Collation Algorithm
+# decompositions used in generating the Default Unicode Collation Element Table (DUCET) for the Unicode Collation Algorithm
 ##
 uca.decomps <-read.decomps(
   uca.path=uca.path
 )
 
-
 ##
-## ivd/IVD_Sequences.txt
+## ivd/<dt/>/IVD_Sequences.txt
 ##
 ivd.seq <- read.ivdSeq(ivd.path = ivd.path)
 ## 
-## ivd/IVD_Stats.txt
+## ivd/<dt/>/IVD_Stats.txt
 ##
+
+##
+##
+##
+ucs.confusables <- read.confusable(ucd.path =  ucd.path)
+##
+##
+##
+ucs.confusablesSummary <- read.confusableSummary(ucd.path =  ucd.path)
+##
+##
+##
+ucs.idType <- structure( 
+  ucdTblParse(
+    readLines(paste(ucs.path, "security/IdentifierType.txt", sep = "/"))
+    , cnm = c("cp_lo", "cp_hi", "Identifier_Type", "comments")
+  )
+  , rpath = "security/IdentifierType.txt" 
+)
+##                                                                                     
+##
+##
+ucs.idStat <- structure( 
+  ucdTblParse(
+    readLines(paste(ucs.path, "security/IdentifierStatus.txt", sep = "/"))
+    , cnm = c("cp_lo", "cp_hi", "Identifier_Status", "comments")
+  )
+  , rpath = "security/IdentifierStatus.txt" 
+)
+## 
+##
+##
+ucs.intentional <-  structure( 
+  ucdTblParse(
+    readLines(paste(ucs.path, "security/intentional.txt", sep = "/"))
+    , cnm = c("cp_src", "cp_target", "comments")
+    , ncp = 2L
+    , cp.drop=T
+    # , comm.parse = T
+    # , penult.drop = F
+  )
+  , rpath = "security/intentional.txt" 
+)
+
